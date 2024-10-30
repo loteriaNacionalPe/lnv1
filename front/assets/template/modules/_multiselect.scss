@@ -1,0 +1,93 @@
+@use 'sass:map';
+@use 'variables';
+
+
+$multiselect--light: (
+  "multiselect-panel-bg": #fff ,
+  "multiselect-panel-bg-hover": #e9ecef,
+  "multiselect-panel-bg-highlight": #e3f2fd,
+  "multiselect-color": #495057,
+);
+
+$multiselect--dark: (
+  "multiselect-panel-bg": #323130 ,
+  "multiselect-panel-bg-hover": #525150,
+  "multiselect-panel-bg-highlight": #495159,
+  "multiselect-color": #fff,
+);
+
+.theme {
+  --multiselect-panel-bg: #{map.get($multiselect--light,"multiselect-panel-bg")};
+  --multiselect-panel-bg-hover: #{map.get($multiselect--light,"multiselect-panel-bg-hover")};
+  --multiselect-panel-bg-highlight: #{map.get($multiselect--light,"multiselect-panel-bg-highlight")};
+  --multiselect-color: #{map.get($multiselect--light,"multiselect-color")};
+
+  &--dark {
+    --multiselect-panel-bg: #{map.get($multiselect--dark,"multiselect-panel-bg")};
+    --multiselect-panel-bg-hover: #{map.get($multiselect--dark,"multiselect-panel-bg-hover")};
+    --multiselect-panel-bg-highlight: #{map.get($multiselect--dark,"multiselect-panel-bg-highlight")};
+    --multiselect-color: #{map.get($multiselect--dark,"multiselect-color")};
+  }
+}
+
+
+.p-multiselect {
+    height: variables.$height-inputs;
+    align-items: center;
+
+    background-color: transparent !important;
+    
+    &-close{
+      &:hover{
+        background: transparent !important;
+      }
+      &:focus {
+        box-shadow: none !important;
+      }
+    }
+
+    &-label, .p-inputtext {
+      font-size: variables.$font-size-inputs;
+    }
+  
+    &-filter-container{
+      min-width: 8rem;
+      .p-multiselect-filter.p-inputtext{
+        width: 100%;
+        height: variables.$height-inputs;
+        font-size: variables.$font-size-inputs;
+      }
+    }
+
+    &-header, &-items-wrapper {
+      background: var(--multiselect-panel-bg) !important;
+    }
+
+    &-header {
+      padding: 0.5rem 0.6rem;
+    }
+  
+    &-item {
+      font-size: variables.$font-size-inputs;
+      border-radius: 4px !important;
+      margin: 4px auto 0 !important;
+      padding: 5px !important;
+      width: 95% !important;
+      color: var(--multiselect-color) !important;
+
+      &:hover {
+        background: var(--multiselect-panel-bg-hover) !important;
+      }
+      &:focus {
+        box-shadow: none !important;
+      }
+    }
+
+    &-item.p-highlight {
+      background: var(--multiselect-panel-bg-highlight) !important;
+    }
+
+    &-panel{
+      min-width: 13.5rem !important;
+    }
+  }

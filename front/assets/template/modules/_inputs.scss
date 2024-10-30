@@ -1,0 +1,380 @@
+@use 'sass:map';
+@use 'variables';
+
+$input--light: (
+  "input-placeholder": #cdcdcd,
+  "input-color": #495057,
+  "input-table-bg": #e1e1eb,
+);
+
+$input--dark: (
+  "input-placeholder": #bcbaba,
+  "input-color": #fff,
+  "input-table-bg": #525254,
+);
+
+.theme {
+  --input-placeholder: #{map.get($input--light, "input-placeholder")};
+  --input-color: #{map.get($input--light, "input-color")};
+  --input-table-bg: #{map.get($input--light, "input-table-bg")};
+
+  &--dark {
+    --input-placeholder: #{map.get($input--dark, "input-placeholder")};
+    --input-color: #{map.get($input--dark, "input-color")};
+    --input-table-bg: #{map.get($input--dark, "input-table-bg")};
+  }
+}
+
+// main INPUT in FilterEvents
+.custom-input{
+  height: variables.$height-inputs;
+  font-size: variables.$font-size-inputs;
+  border-radius: variables.$border-radious ;
+  padding: 0px 5px;
+  border: 1px solid var(--input-placeholder);
+  color: var(--input-color) !important;
+  background: transparent !important;
+}
+
+// PRIMEVUE: Styles for default input
+// table .p-inputtext
+.p-inputtext:not(#username, #password) {
+  height: variables.$height-inputs;
+  font-size: variables.$font-size-inputs !important;
+  background: transparent;
+  border: 1px solid var(--input-placeholder);
+  color: var(--input-color);
+
+  &::placeholder{
+    color: var(--input-placeholder);
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 0.1rem #a6d5fa;
+  }
+}
+
+table {
+  .p-inputtext:not(.p-inputgroup .p-inputtext, .p-dropdown .p-inputtext) {
+    border: none !important;
+    color: var(--input-color) !important;
+    font-size: calc(variables.$font-size-inputs - 0.1rem) !important;
+    height: calc(variables.$height-inputs - 0.5rem) !important;
+    background-color: var(--input-table-bg) !important;
+  }
+}
+
+// INPUTS for DROPDOWN
+.p-dropdown {
+  .p-inputtext{
+    border: none !important;
+    text-align: start;
+  }
+
+  &-filter-container {
+    .p-inputtext {
+      border: 1px solid var(--input-placeholder) !important;
+      width: 100% !important;
+      height: variables.$height-inputs !important;
+      font-size: variables.$font-size-inputs !important;
+      margin:auto !important;
+    }
+  }
+}
+
+table {
+  .p-dropdown {
+    background-color: var(--input-table-bg) !important;
+    height: 1.5rem !important;
+
+    .p-inputtext{
+      font-size: 0.7rem !important;
+      margin-right: 1.5rem;
+    }
+
+    &-clear-icon {
+      position: relative;
+      top: 0;
+      margin-top: 0;
+      right: 0;
+      font-size: 0.7rem !important;
+    }
+
+    &-trigger {
+      &-icon {
+        font-size: 1rem !important;
+      }
+    }
+
+  }
+}
+
+
+
+
+.p-input-icon-left {
+  i{
+    color: var(--input-placeholder) !important; 
+  }
+  .pi {
+    font-size: variables.$font-size-inputs;
+    top: 1.5rem;
+  }
+  .p-inputtext.p-inputtext-sm {
+    height: variables.$height-inputs;
+    font-size: variables.$font-size-inputs;
+  }
+}
+
+
+// Input number component
+$inputNumber--light: (
+  "inputNumber-color": #000,
+  "inputNumber-modifiers-color": #999,
+);
+
+$inputNumber--dark: (
+  "inputNumber-color": #fff,
+  "inputNumber-modifiers-color": #fff,
+);
+
+.theme {
+  --inputNumber-color: #{map.get($inputNumber--light, "inputNumber-color")};
+  --inputNumber-modifiers-color: #{map.get($inputNumber--light, "inputNumber-modifiers-color")};
+
+  &--dark {
+    --inputNumber-color: #{map.get($inputNumber--dark, "inputNumber-color")};
+    --inputNumber-modifiers-color: #{map.get($inputNumber--dark, "inputNumber-modifiers-color")};
+  }
+}
+
+.inputNumber {
+  &__input {
+    background: transparent;
+    color: var(--inputNumber-color);
+  }
+  &__modifier {
+    color: var(--inputNumber-modifiers-color);
+  }
+}
+
+table {
+  .inputNumber{
+    &__input {
+      border: none !important;
+    }
+
+    &__modifier {
+      visibility: hidden !important;
+    }
+    
+    &:hover {
+      .inputNumber__modifier {
+        visibility: visible !important;
+      }
+    }
+    
+
+  }
+}
+
+
+// INPUT Group
+$inputgroup--light: (
+  "inputgroup-icon-color": #6c757d,
+  "inputgroup-prepend-bg": rgba(0,0,0,0.1),
+);
+
+$inputgroup--dark: (
+  "inputgroup-icon-color": #fff,
+  "inputgroup-prepend-bg": rgba(255,255,255,0.2),
+);
+
+.theme {
+  --inputgroup-icon-color: #{map.get($inputgroup--light, "inputgroup-icon-color")};
+
+  &--dark {
+    --inputgroup-icon-color: #{map.get($inputgroup--dark, "inputgroup-icon-color")};
+  }
+}
+
+
+// Igualar tamaño de inputs Prime con bootstrap
+.p-inputgroup{
+  height: variables.$height-inputs;
+  .p-inputgroup-addon{
+    height: 100%;
+    width: variables.$height-inputs; //Porque es cuadrado
+    color: var(--inputgroup-icon-color);
+    background: transparent;
+  }
+  .p-inputtext.p-inputtext-sm, 
+  .p-inputtext.p-password-input,
+  .p-inputtext.p-dropdown-label,
+  .p-inputtext.p-placeholder{
+    height: 100%;
+    font-size: variables.$font-size-inputs;
+  }
+}
+
+// Width and height styles of input groups
+.input-group-sm{
+  height: variables.$height-inputs;
+  .input-group-prepend,.custom-file{
+    height: 100%;
+  }
+  .custom-file{
+    input,label {
+      height: 100%;
+      font-size: variables.$font-size-general;
+    }
+
+    &-label {
+      background-color: transparent;
+      color: var(--inputgroup-icon-color) !important; 
+    }
+  }
+  .custom-file-label::after{
+    height: 100%;
+    font-size: variables.$font-size-general;
+  }
+  .input-group-prepend{
+    width: variables.$height-inputs;
+    .input-group-text{
+      width: 100%;
+      background-color: transparent;
+      color: var(--inputgroup-icon-color);
+    }
+  }
+}
+
+input[type="number"], textarea {
+  color: var(--input-color) !important;
+}
+
+
+
+// INPUTSWITCH styles
+.p-inputswitch{
+  height: 1.6rem;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider, 
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:hover{
+  background: #607D8B !important  ; //$btn-bg-normal;
+  color: #607D8B;
+}
+
+.p-inputswitch.p-focus .p-inputswitch-slider {
+  box-shadow: none;
+}
+
+
+// Checkboxes Primevue styles
+.p-checkbox {
+  width: 1rem !important;
+  height: 1rem !important;
+  
+  &-box  {
+    border: none !important;
+    width: 1rem !important;
+    height: 1rem !important;
+    
+    .p-checkbox-icon {
+      background: #607d8b !important;
+      font-size: 0.5rem !important;
+    }
+
+    &.p-highlight, &.p-indeterminate {
+      background: #607d8b !important;
+      border-color: #607d8b; //$btn-bg-normal
+      .p-checkbox-icon {
+        color: #fff !important;
+      }
+
+      &:hover {
+        border-color: #607d8b; //$btn-bg-normal
+        background: #607d8b;
+      }
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+// FORM CONTROL Classes
+.form-control {
+  background-color: rgba($color: #e3e9ed, $alpha: 0.8);
+  border-color: #e3e9ed;
+  background-color: rgba(11, 34, 57, 0.03);
+  border-color: rgba(11, 34, 57, 0.03);
+  color: #515e79;
+  &.form-control-sm {
+    border-radius: 0.35rem;
+  }
+  &:hover {
+    border-color: #bec2c6;
+  }
+  &:focus {
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, #113255 0px 0px 0px 4px;
+    border: 1px solid #d1d3e2;
+  }
+  &:disabled,
+  &[readonly] {
+    &:hover {
+      border-color: rgba(11, 34, 57, 0.13);
+    }
+    background-color: #cfd9e0;
+    background-color: rgba(11, 34, 57, 0.13);
+    border-color: rgba(11, 34, 57, 0.13);
+  }
+}
+
+.form-label {
+  color: #374957;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.label-block {
+  background-color: #f4f5f5;
+  background-color: #e3e9ed;
+  background-color: rgba(11, 34, 57, 0.03);
+  margin-right: 4px;
+  display: flex;
+  padding: 4px 12px;
+  color: #374957;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 140px;
+  border-radius: 4px;
+  border-radius: 0.35rem;
+  display: flex;
+  align-items: center;
+  label {
+    margin-bottom: 0 !important;
+  }
+}
+
+.input-block {
+  height: 32px;
+  width: 56px;
+  border: 1px solid #cfd9e0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border-radius: 0.35rem;
+  &:hover {
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px, #113255 0px 0px 0px 4px;
+    border: 1px solid #d1d3e2;
+  }
+}

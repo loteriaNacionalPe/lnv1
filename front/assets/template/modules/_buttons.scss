@@ -1,0 +1,217 @@
+@use 'variables';
+
+.btn-view {
+  min-width: 110px;
+  &.btn-sm {
+    min-width: 75px;
+    padding: 0.25rem 1rem;
+  }
+}
+
+.btn-outline-alt-primary {
+  background-color: none;
+  color: #1273eb;
+  border: 2px solid #1273eb;
+  &:hover {
+    background-color: rgba(18, 115, 235, 0.1);
+    color: #1273eb;
+  }
+  &:disabled {
+    background-color: transparent !important;
+  }
+}
+
+.ev-btn-outline-secondary {
+  background-color: none;
+  color: #374957;
+  border: 2px solid #cfd9e0;
+  &:hover {
+    background: rgba(207, 217, 224, 0.1);
+    color: #374957;
+  }
+}
+
+.ev-btn-outline-primary {
+  background-color: none;
+  color: #113255;
+  border: 2px solid #113255;
+  &:hover {
+    color: #113255;
+    background-color: rgba(0, 28, 64, 0.07);
+  }
+}
+
+.ev-btn-light {
+  background-color: #e3e9ed;
+  color: #113255;
+  color: #374957;
+  border: 2px solid #e3e9ed;
+  &:hover {
+    color: #113255;
+    background-color: #cfd9e0;
+    border: 2px solid #cfd9e0;
+  }
+  &:disabled {
+    background-color: #ecf0f3;
+    border-color: #ecf0f3;
+    color: inherit;
+  }
+}
+
+.ev-btn-light-alt {
+  background-color: #efefef;
+  color: #113255;
+  color: #515e79;
+  &:hover {
+    background-color: #e2e2e2;
+    color: #515e79;
+  }
+}
+
+.btn {
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.option-group {
+  display: inline-flex;
+  background: #e3e9ed;
+  border-radius: 4px;
+  padding: 2px;
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    min-width: 32px;
+    padding: 4px 8px;
+    margin-bottom: 0;
+    border-radius: 4px;
+    position: relative;
+    &:hover {
+      color: #001c40;
+    }
+    input[type='radio'] {
+      position: absolute;
+      opacity: 0;
+      z-index: -1000;
+    }
+  }
+  .active {
+    background-color: white;
+    color: #001c40;
+    .icon {
+      background-color: #001c40;
+    }
+  }
+}
+
+.p-button.p-button-sm{
+  height: variables.$height-inputs;
+  .p-button-label,
+  .p-button-icon,
+  .pi,
+  .pi-search::before{
+    font-size: variables.$font-size-inputs;
+  }
+}
+
+.p-button.p-button-sm.p-button-icon-only {
+  width: variables.$height-inputs;
+  height: variables.$height-inputs;
+}
+
+// Options buttons in table
+td {
+  .p-button.p-button-sm.p-button-icon-only {
+    width: variables.$height-inputs - 0.5;
+    height: variables.$height-inputs - 0.5;
+    padding: 0px;
+    .p-button-icon {
+      font-size: variables.$font-size-inputs - 0.1;
+    }
+  } 
+}
+
+// Table pagination
+.pagination .page-item .page-link {
+  width: variables.$height-inputs;
+  height: variables.$height-inputs;
+  font-size: variables.$font-size-inputs
+}
+
+
+
+
+
+
+// JUNTAR ARCHIVO
+
+// Buttons background
+.p-button-primary,
+.p-button-secondary,
+.p-button-success,
+.p-button-info,
+.p-button-warning,
+.p-button-help,
+.p-button-danger{
+  background: variables.$btn-bg-normal !important;
+  border-color: variables.$btn-bg-normal !important;
+  color: #fff !important;
+}
+
+// Background botones con hover
+.p-button-success:hover{
+  background: variables.$btn-bg-success !important;
+  border-color: variables.$btn-bg-success !important;
+}
+.p-button-info:hover,.p-button-primary:hover{
+  background: variables.$btn-bg-info !important;
+  border-color: variables.$btn-bg-info !important;
+}
+.p-button-warning:hover{
+  background: variables.$btn-bg-warning !important;
+  border-color: variables.$btn-bg-warning !important;
+}
+.p-button-help:hover{
+  background: variables.$btn-bg-help !important;
+  border-color: variables.$btn-bg-help !important;
+}
+.p-button-danger:hover{
+  background: variables.$btn-bg-danger !important;
+  border-color: variables.$btn-bg-danger !important;
+}
+
+// buttons text Background
+.p-button-primary.p-button-text,
+.p-button-secondary.p-button-text,
+.p-button-success.p-button-text,
+.p-button-info.p-button-text,
+.p-button-warning.p-button-text,
+.p-button-help.p-button-text,
+.p-button-danger.p-button-text{
+  background: variables.$btn-background !important;
+  border-color: variables.$btn-background !important;
+  color: variables.$btn-bg-normal !important;
+}
+
+// buttons text Background
+.p-button-primary.p-button-text:hover,
+.p-button-secondary.p-button-text:hover,
+.p-button-success.p-button-text:hover,
+.p-button-info.p-button-text:hover,
+.p-button-warning.p-button-text:hover,
+.p-button-help.p-button-text:hover,
+.p-button-danger.p-button-text:hover{
+  background: variables.$btn-bg-normal !important;
+  border-color: variables.$btn-bg-normal !important;
+  color: white !important;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+.scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.scroll::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.scroll::-webkit-scrollbar-button:increment,
+.scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+.scroll::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #8f8f95 #e3e3e1;
+}
+
+.scroll {
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+
+// JUNTAR ARCHIVO
+*::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+*::-webkit-scrollbar-button:increment,*::-webkit-scrollbar-button {
+  display: none;
+}
+
+*::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color:  #d5d7da !important;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color:  #6c757d !important;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

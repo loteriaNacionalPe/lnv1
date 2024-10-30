@@ -1,0 +1,9 @@
+{
+  "role": "Role | Role",
+  "permissionsNumber": "Permissions number",
+  "permissionsByModule": "Permissions by module",
+  "module": "Module",
+  "moduleType": "Module Type",
+  "permissions":"Permissions",
+  "dontRoleExist":"The role doesn't exist"
+}

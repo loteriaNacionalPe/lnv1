@@ -1,0 +1,63 @@
+// Medidas para inputs, dropdowns, botones,...
+$height-inputs: 2rem;
+$font-size-inputs: 0.8rem;
+
+// Font size de letra standard para texto (tablas, etc)
+$font-size-general: 0.8rem;
+$font-size-card-title: 1.3rem;
+
+
+// Color de botones
+$btn-bg-primary: #f44070;
+$btn-bg-normal: #607D8B;
+$btn-bg-success: #28c45c;
+$btn-bg-warning: #f89c0c;
+$btn-bg-help: #b054f4;
+$btn-bg-info: #4084f4;
+$btn-bg-danger: #e02c2c;
+
+// background text button color
+$btn-background : #ffffff;
+
+// border radious 
+$border-radious : 0.5rem;
+
+
+$colors--light: (
+    // "primary": #3a3b45,
+    // "primary": #515e79,
+    "primary": #6a737c,
+    "active-1": #d1d1d1,
+    "active-2": #d6d6d6,
+    "hover-1": #e4e6e7,
+    "menu-1": #f6f6f6,
+);
+
+$colors--dark: (
+    "primary": #fff,
+    "active-1": rgba(228,228,228,0.3),
+    "active-2": #b7b9cc,
+    "hover-1":  #525150,
+    "menu-1": #323130,
+);
+
+
+
+
+$theme-light: (
+    "general-border-components": 1px solid #e5e5e5,
+    "general-text-color": #6a737c,
+    "container-fluid-bg": #fff,
+    "card-bg": #fff,
+    "card-shadow": 2px 0px 8px 0px rgba(0, 0, 0, 0.4),
+    "card-border": none,
+);
+
+$theme-dark: (
+    "general-border-components": 1px solid #504d4d,
+    "general-text-color": #fff,
+    "container-fluid-bg": #252423,
+    "card-bg": #201f1e,
+    "card-shadow": 1px 5px 20px 6px rgba(0, 0, 0,0.7),
+    "card-border": 1px solid #4c4747,
+);

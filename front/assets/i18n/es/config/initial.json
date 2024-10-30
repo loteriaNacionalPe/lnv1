@@ -1,0 +1,14 @@
+{
+  "title":"Configuración Inicial",
+  "originData": "Origen de datos",
+  "database": "Base de datos",
+  "host": "Host",
+  "port": "Puerto",
+  "api":"API",
+  "databaseName": "Nombre de base de datos",
+  "serverName": "Nombre del servidor",
+  "firstElemenet":"Primer elemento",
+  "templateName":"Nombre de plantilla",
+  "business":"Negocio",
+  "attribute":"Attributo | Attributos"
+}

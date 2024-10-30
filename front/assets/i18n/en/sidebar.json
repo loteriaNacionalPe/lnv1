@@ -1,0 +1,47 @@
+{
+    "donwtimesSection": [
+        {
+            "id": "side-EventManagement",
+            "name": "Events",
+            "icon": "fas fa-list",
+            "items": [{
+                "id": "events",
+                "name": "Events",
+                "url": "/event_management/events",
+                "permission": ""
+            }]
+        }
+    ],
+    "adminSection": [
+        {
+            "id": "side-security",
+            "name": "Security",
+            "icon": "fa fa-users",
+            "items": [{
+                    "id": "users",
+                    "name": "Users",
+                    "url": "/security/user",
+                    "permission": "view_user"
+                },
+                {
+                    "id": "role",
+                    "name": "Roles and permissions",
+                    "url": "/security/role",
+                    "permission": "view_group"
+                },
+                {
+                    "id": "logEntry",
+                    "name": "Logs",
+                    "url": "/security/log",
+                    "permission": "view_logentry"
+                },
+                {
+                  "id": "notifications",
+                  "name": "Notifications",
+                  "url": "/notifications/notifications",
+                  "permission": "view_notification"
+                }
+            ]
+        }
+    ]
+}

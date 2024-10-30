@@ -1,0 +1,9 @@
+{
+  "role": "Rol | Roles",
+  "permissionsNumber": "Número de Permisos",
+  "permissionsByModule": "Permisos por módulo",
+  "module": "Módulo",
+  "moduleType": "Tipo de módulo",
+  "permissions":"Permisos",
+  "dontRoleExist":"El rol no existe"
+}

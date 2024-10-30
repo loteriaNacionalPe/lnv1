@@ -1,0 +1,136 @@
+2024-10-30T00:02:31.900-05:00 DEBUG 10624 --- [msvc-pagos] [http-nio-8003-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/pagos/user/compraSorteo/sorteos/usuario?idUsuario=1014", parameters={masked}
+2024-10-30T00:02:31.987-05:00 DEBUG 10624 --- [msvc-pagos] [http-nio-8003-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.loterianacional.springcloud.msvc.pagos.controllers.CompraSorteoController#listarCompraSorteoPorUsuario(Integer)
+2024-10-30T00:02:32.164-05:00 DEBUG 10624 --- [msvc-pagos] [http-nio-8003-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-10-30T00:02:32.185-05:00 DEBUG 10624 --- [msvc-pagos] [http-nio-8003-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[CompraSorteoUsuario(idSorteo=5, idCompraSorteo=103, juego=Billete de la Fortuna, fechaSorteo=2024-1 (truncated)...]
+2024-10-30T00:02:32.223-05:00 DEBUG 10624 --- [msvc-pagos] [http-nio-8003-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-30T00:07:53.351-05:00  INFO 10624 --- [msvc-pagos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T00:07:53.401-05:00  INFO 10624 --- [msvc-pagos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-30T00:07:53.408-05:00  INFO 10624 --- [msvc-pagos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-30T08:38:41.984-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.l.s.msvc.pagos.MsvcPagosApplication    : Starting MsvcPagosApplication using Java 17.0.6 with PID 13812 (D:\LN\BackEnd\loteria-nacional\msvc-pagos\target\classes started by User in D:\LN\BackEnd\loteria-nacional)
+2024-10-30T08:38:42.030-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.l.s.msvc.pagos.MsvcPagosApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-30T08:38:42.167-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-30T08:38:42.168-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-30T08:38:43.540-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-30T08:38:43.650-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 3 JPA repository interfaces.
+2024-10-30T08:38:44.173-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=61ab64f7-fac8-3b95-9cee-57f2a23c91f3
+2024-10-30T08:38:45.638-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8003 (http)
+2024-10-30T08:38:45.687-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-30T08:38:45.689-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-30T08:38:45.845-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-30T08:38:45.846-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3676 ms
+2024-10-30T08:38:46.257-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-30T08:38:46.373-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-30T08:38:46.423-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-30T08:38:46.852-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-30T08:38:46.892-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-30T08:38:47.377-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: df205122-0116-404b-9bbd-aa79414ad4ff
+2024-10-30T08:38:47.379-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-30T08:38:48.693-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-30T08:38:48.701-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T08:38:49.703-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-30T08:38:49.870-05:00  WARN 13812 --- [msvc-pagos] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-30T08:38:50.249-05:00  WARN 13812 --- [msvc-pagos] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-10-30T08:38:50.740-05:00  WARN 13812 --- [msvc-pagos] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 62825693-b946-4af6-9913-d6714295096c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-10-30T08:38:50.754-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-10-30T08:38:50.965-05:00 DEBUG 13812 --- [msvc-pagos] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2024-10-30T08:38:51.120-05:00 DEBUG 13812 --- [msvc-pagos] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-10-30T08:38:51.317-05:00 DEBUG 13812 --- [msvc-pagos] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-30T08:38:51.354-05:00 DEBUG 13812 --- [msvc-pagos] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-30T08:38:52.009-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8003 (http) with context path '/'
+2024-10-30T08:38:52.082-05:00  INFO 13812 --- [msvc-pagos] [restartedMain] o.l.s.msvc.pagos.MsvcPagosApplication    : Started MsvcPagosApplication in 11.144 seconds (process running for 12.036)
+2024-10-30T08:41:08.841-05:00  INFO 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-30T08:41:08.841-05:00  INFO 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-30T08:41:08.841-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-10-30T08:41:08.842-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-10-30T08:41:08.842-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-10-30T08:41:08.843-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3c18a6e8
+2024-10-30T08:41:08.844-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@74b7fbaf
+2024-10-30T08:41:08.844-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-30T08:41:08.844-05:00  INFO 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-10-30T08:41:08.968-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/pagos/user/compraSorteo/registroCompraSorteo", parameters={}
+2024-10-30T08:41:08.971-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.loterianacional.springcloud.msvc.pagos.controllers.CompraSorteoController#insertarCompraSorteo(CompraSorteo, String)
+2024-10-30T08:41:09.069-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CompraSorteo(idCompraSorteo=null, idSorteo=5, idUsuario=1014, idTipoUsuario=1, fecha=null, cantidadI (truncated)...]
+2024-10-30T08:41:09.883-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2024-10-30T08:41:09.885-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Se registró la compra."]
+2024-10-30T08:41:09.896-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-30T08:42:10.210-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/pagos/user/compraSorteo/registroCompraSorteo", parameters={}
+2024-10-30T08:42:10.210-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.loterianacional.springcloud.msvc.pagos.controllers.CompraSorteoController#insertarCompraSorteo(CompraSorteo, String)
+2024-10-30T08:42:10.212-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CompraSorteo(idCompraSorteo=null, idSorteo=5, idUsuario=1014, idTipoUsuario=1, fecha=null, cantidadI (truncated)...]
+2024-10-30T08:42:10.300-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2024-10-30T08:42:10.300-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Se registró la compra."]
+2024-10-30T08:42:10.301-05:00 DEBUG 13812 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-30T08:46:10.065-05:00  INFO 13812 --- [msvc-pagos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T08:46:10.072-05:00  INFO 13812 --- [msvc-pagos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-30T08:46:10.086-05:00  INFO 13812 --- [msvc-pagos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-30T08:46:16.149-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.l.s.msvc.pagos.MsvcPagosApplication    : Starting MsvcPagosApplication using Java 17.0.6 with PID 3484 (D:\LN\BackEnd\loteria-nacional\msvc-pagos\target\classes started by User in D:\LN\BackEnd\loteria-nacional)
+2024-10-30T08:46:16.154-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.l.s.msvc.pagos.MsvcPagosApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-30T08:46:16.229-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-10-30T08:46:16.230-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-10-30T08:46:17.637-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-30T08:46:17.772-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 3 JPA repository interfaces.
+2024-10-30T08:46:18.126-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=61ab64f7-fac8-3b95-9cee-57f2a23c91f3
+2024-10-30T08:46:19.275-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8003 (http)
+2024-10-30T08:46:19.295-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-30T08:46:19.296-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-30T08:46:19.407-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-30T08:46:19.408-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3178 ms
+2024-10-30T08:46:19.788-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-30T08:46:19.898-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-30T08:46:19.960-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-30T08:46:20.439-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-30T08:46:20.485-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-30T08:46:20.984-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection ConnectionID:1 ClientConnectionId: a3c25862-3179-445d-908e-a43174dcee1c
+2024-10-30T08:46:20.988-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-30T08:46:22.406-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-30T08:46:22.410-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T08:46:22.886-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-10-30T08:46:23.163-05:00  WARN 3484 --- [msvc-pagos] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-30T08:46:23.217-05:00  WARN 3484 --- [msvc-pagos] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-10-30T08:46:23.520-05:00  WARN 3484 --- [msvc-pagos] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d40077fa-50c5-4fb6-b52d-ca6e5b11ece3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-10-30T08:46:23.538-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2024-10-30T08:46:23.811-05:00 DEBUG 3484 --- [msvc-pagos] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 10 mappings in 'requestMappingHandlerMapping'
+2024-10-30T08:46:23.975-05:00 DEBUG 3484 --- [msvc-pagos] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-10-30T08:46:24.237-05:00 DEBUG 3484 --- [msvc-pagos] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-30T08:46:24.292-05:00 DEBUG 3484 --- [msvc-pagos] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-30T08:46:24.680-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8003 (http) with context path '/'
+2024-10-30T08:46:24.817-05:00  INFO 3484 --- [msvc-pagos] [restartedMain] o.l.s.msvc.pagos.MsvcPagosApplication    : Started MsvcPagosApplication in 9.413 seconds (process running for 10.213)
+2024-10-30T08:46:45.057-05:00  INFO 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-10-30T08:46:45.057-05:00  INFO 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-10-30T08:46:45.057-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2024-10-30T08:46:45.058-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2024-10-30T08:46:45.058-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2024-10-30T08:46:45.059-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2cab5d2f
+2024-10-30T08:46:45.059-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@78dacb21
+2024-10-30T08:46:45.059-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2024-10-30T08:46:45.060-05:00  INFO 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2024-10-30T08:46:45.152-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/api/pagos/user/compraSorteo/registroCompraSorteo", parameters={}
+2024-10-30T08:46:45.155-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.loterianacional.springcloud.msvc.pagos.controllers.CompraSorteoController#insertarCompraSorteo(CompraSorteo, String)
+2024-10-30T08:46:45.254-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CompraSorteo(idCompraSorteo=null, idSorteo=5, idUsuario=1014, idTipoUsuario=1, fecha=null, cantidadI (truncated)...]
+2024-10-30T08:46:45.668-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2024-10-30T08:46:45.669-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Se registró la compra."]
+2024-10-30T08:46:45.679-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-30T08:47:21.096-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.web.servlet.DispatcherServlet        : POST "/api/pagos/user/compraSorteo/registroCompraSorteo", parameters={}
+2024-10-30T08:47:21.097-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.loterianacional.springcloud.msvc.pagos.controllers.CompraSorteoController#insertarCompraSorteo(CompraSorteo, String)
+2024-10-30T08:47:21.101-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CompraSorteo(idCompraSorteo=null, idSorteo=5, idUsuario=1014, idTipoUsuario=1, fecha=null, cantidadI (truncated)...]
+2024-10-30T08:47:21.186-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2024-10-30T08:47:21.187-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Se registró la compra."]
+2024-10-30T08:47:21.188-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-30T08:48:17.850-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/api/pagos/user/compraSorteo/registroCompraSorteo", parameters={}
+2024-10-30T08:48:17.850-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.loterianacional.springcloud.msvc.pagos.controllers.CompraSorteoController#insertarCompraSorteo(CompraSorteo, String)
+2024-10-30T08:48:17.852-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CompraSorteo(idCompraSorteo=null, idSorteo=5, idUsuario=1014, idTipoUsuario=1, fecha=null, cantidadI (truncated)...]
+2024-10-30T08:48:17.925-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+2024-10-30T08:48:17.925-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing ["Se registró la compra."]
+2024-10-30T08:48:17.926-05:00 DEBUG 3484 --- [msvc-pagos] [http-nio-8003-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2024-10-30T09:15:45.161-05:00  INFO 3484 --- [msvc-pagos] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-30T09:15:45.236-05:00  INFO 3484 --- [msvc-pagos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-30T09:15:45.249-05:00  INFO 3484 --- [msvc-pagos] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

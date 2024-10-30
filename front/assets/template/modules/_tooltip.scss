@@ -1,0 +1,72 @@
+[aria-label][data-placement] {
+  &::before {
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: #183153;
+    transition: all 0.18s ease-out 0.18s;
+    content: '';
+    position: absolute;
+    z-index: 10;
+  }
+  &::after {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.18s ease-out 0.18s;
+    text-indent: 0;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    background: #183153;
+    border-radius: 4px;
+    color: white;
+    content: attr(aria-label);
+    padding: 0.375rem 0.75rem;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1050;
+  }
+  &:hover {
+    &::before {
+      opacity: 1 !important;
+    }
+    &::after {
+      opacity: 1 !important;
+    }
+  }
+}
+
+[aria-label][data-placement='down'] {
+  &::before {
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-bottom-color: transparent;
+    border-bottom-color: #183153;
+  }
+  &::after {
+    margin-top: 10px;
+  }
+  &::before,
+  &::after {
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translate(-50%, calc(4px * -1));
+    transform: translate(-50%, -2px);
+  }
+}
+
+[aria-label][data-placement='up'] {
+  &::after {
+    margin-bottom: 10px;
+  }
+  &::before,
+  &::after {
+    bottom: 100%;
+    -webkit-transform-origin: top;
+    transform-origin: top;
+    -webkit-transform: translate(0, 2px);
+    transform: translate(0, 2px);
+  }
+}

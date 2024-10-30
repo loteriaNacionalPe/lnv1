@@ -1,0 +1,87 @@
+@use 'sass:map';
+@use 'variables';
+
+
+$card--light: (
+    "card-bg": map.get(variables.$theme-light,"card-bg"),
+    "card-color": #495057,
+    "card-shadow": map.get(variables.$theme-light,"card-shadow"),
+    "card-border": map.get(variables.$theme-light,"card-border"),
+    "card-border-title": #414c87,
+);
+
+$card--dark: (
+    "card-bg": map.get(variables.$theme-dark,"card-bg"),
+    "card-color": #fff,
+    "card-shadow": map.get(variables.$theme-dark,"card-shadow"),
+    "card-border": map.get(variables.$theme-dark,"card-border"),
+    "card-border-title": #fff,
+);
+
+.theme {
+    --card-bg: #{map.get($card--light,"card-bg")};
+    --card-color: #{map.get($card--light,"card-color")};
+    --card-shadow: #{map.get($card--light,"card-shadow")};
+    --card-border: #{map.get($card--light,"card-border")};
+    --card-border-title: #{map.get($card--light,"card-border-title")};
+
+    &--dark {
+        --card-bg: #{map.get($card--dark,"card-bg")};
+        --card-color: #{map.get($card--dark,"card-color")};
+        --card-shadow: #{map.get($card--dark,"card-shadow")};
+        --card-border: #{map.get($card--dark,"card-border")};
+        --card-border-title: #{map.get($card--dark,"card-border-title")};
+    }
+}
+
+
+.p-card.p-component {
+    background-color: var(--card-bg);
+    color: var(--card-color);
+    box-shadow: var(--card-shadow);
+    border: var(--card-border);
+
+    // Card's title
+    .p-card-body{
+        .p-card-title{
+            .card-title-size{
+                font-size: variables.$font-size-card-title;
+            }
+        }
+    }
+}
+
+
+.modal-dialog {
+    .p-card {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        
+        &-title {
+            border-bottom: 1px solid var(--card-border-title) !important;
+            padding-bottom: 0.3rem;
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+            color: var(--card-border-title) !important;
+        }
+
+        label {
+            font-size: 0.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem !important;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+

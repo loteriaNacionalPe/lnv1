@@ -1,0 +1,190 @@
+@use 'sass:map';
+@use 'variables';
+
+$dropdown--light:(
+  "dropdown-panel-bg": #fff,
+  "dropdown-item-color": #495057,
+  "dropdown-item-hover-bg": #e9ecef,
+  "dropdown-item-highlight-bg": #E3F2FD,
+  "dropdown-header-border": rgba(0,0,0,0.1),
+  // For dropdown-menu
+  "dropdown-menu-items-hover": map.get(variables.$colors--light, "hover-1"),
+  "dropdown-menu-items-color": map.get(variables.$colors--light,"primary"),
+  "dropdown-menu-items-bg": map.get(variables.$colors--light,"menu-1"),
+  "dropdown-menu-items-selected-bg": map.get(variables.$colors--light, "active-2"),
+  "dropdown-menu-items-selected-color": #42434d,
+);
+
+$dropdown--dark:(
+  "dropdown-panel-bg": #3b3a39,
+  "dropdown-item-color": #fff,
+  "dropdown-item-hover-bg": #525150,
+  "dropdown-item-highlight-bg": #607d8b,
+  "dropdown-header-border": rgba(255,255,255,0.2),
+  
+  // For dropdown-menu
+  "dropdown-menu-items-hover": map.get(variables.$colors--dark, "hover-1"),
+  "dropdown-menu-items-color": map.get(variables.$colors--dark,"primary"),
+  "dropdown-menu-items-bg": map.get(variables.$colors--dark,"menu-1"),
+  "dropdown-menu-items-selected-bg": map.get(variables.$colors--dark, "active-2"),
+  "dropdown-menu-items-selected-color": #3b3a3b,
+);
+
+.theme {
+  --dropdown-panel-bg: #{map.get($dropdown--light, "dropdown-panel-bg")};
+  --dropdown-item-color: #{map.get($dropdown--light, "dropdown-item-color")};
+  --dropdown-item-hover-bg: #{map.get($dropdown--light, "dropdown-item-hover-bg")};
+  --dropdown-item-highlight-bg: #{map.get($dropdown--light, "dropdown-item-highlight-bg")};
+  --dropdown-header-border: #{map.get($dropdown--light, "dropdown-header-border")};
+
+  // For dropdown-menu
+  --dropdown-menu-items-color: #{map.get($dropdown--light, "dropdown-menu-items-color")};
+  --dropdown-menu-items-hover: #{map.get($dropdown--light, "dropdown-menu-items-hover")};
+  --dropdown-menu-items-bg: #{map.get($dropdown--light, "dropdown-menu-items-bg")};
+  --dropdown-menu-items-selected-bg: #{map.get($dropdown--light, "dropdown-menu-items-selected-bg")};
+  --dropdown-menu-items-selected-color: #{map.get($dropdown--light, "dropdown-menu-items-selected-color")};
+
+
+  &--dark {
+    --dropdown-panel-bg: #{map.get($dropdown--dark, "dropdown-panel-bg")};
+    --dropdown-item-color: #{map.get($dropdown--dark, "dropdown-item-color")};
+    --dropdown-item-hover-bg: #{map.get($dropdown--dark, "dropdown-item-hover-bg")};
+    --dropdown-item-highlight-bg: #{map.get($dropdown--dark, "dropdown-item-highlight-bg")};
+    --dropdown-header-border: #{map.get($dropdown--dark, "dropdown-header-border")};
+
+     // For dropdown-menu
+    --dropdown-menu-items-color: #{map.get($dropdown--dark, "dropdown-menu-items-color")};
+    --dropdown-menu-items-hover: #{map.get($dropdown--dark, "dropdown-menu-items-hover")};
+    --dropdown-menu-items-bg: #{map.get($dropdown--dark, "dropdown-menu-items-bg")};
+    --dropdown-menu-items-selected-bg: #{map.get($dropdown--dark, "dropdown-menu-items-selected-bg")};
+    --dropdown-menu-items-selected-color: #{map.get($dropdown--dark, "dropdown-menu-items-selected-color")};
+  }
+}
+
+
+// PRIMEVUE dropdown
+.p-dropdown {
+  background-color: transparent !important;
+  height: variables.$height-inputs;
+  align-items: center;
+
+  &-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--dropdown-header-border) !important;
+    padding: 0.5rem 0.7rem !important;
+  }
+  
+  .p-inputtext, &-label {
+    font-size: variables.$font-size-inputs;
+  }
+  
+  &-filter-container {
+    min-width: 8rem;
+  }
+
+  &-panel {
+    background: var(--dropdown-panel-bg) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    min-width: 10rem;
+  }
+
+  &-item {
+    color: var(--dropdown-item-color) !important;
+    &:hover {
+      background: var(--dropdown-item-hover-bg) !important;
+    }
+  }
+
+  &-item.p-highlight {
+    background: var(--dropdown-item-highlight-bg) !important;
+  }
+
+  &-item, &-empty-message {
+    font-size: variables.$font-size-inputs;
+  }
+}
+
+// PRIMEVUE dropdown in table
+table{
+  .p-dropdown:not(.table-events .p-dropdown) {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    &:not(.p-disabled).p-focus{
+        box-shadow: none;
+    } 
+    
+    .p-dropdown-trigger {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+.table-events {
+  .p-dropdown {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    &:not(.p-disabled).p-focus{
+        box-shadow: none;
+    } 
+    
+    .p-dropdown-trigger {
+      position: absolute;
+      right: 0;
+    }
+  }
+}
+
+// DROPDOWN MENU Styles
+.dropdown-menu {
+  background: var(--dropdown-menu-items-bg);
+
+  .p-button-sm {
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--dropdown-menu-items-color) !important;  
+    &:hover{
+      background-color: var(--dropdown-menu-items-hover) !important;
+      color: var(--dropdown-menu-items-color) !important;  
+    }
+  }
+
+  .dropdown-item {
+    &-unselected {
+      color: var(--dropdown-menu-items-color);  
+      &:hover {
+        color: var(--dropdown-menu-items-color);  
+        background-color: var(--dropdown-menu-items-hover);
+      }
+    }
+
+    &-selected, &-selected:hover {
+      div p {
+        font-weight: bold;
+      }
+      background: var(--dropdown-menu-items-selected-bg);
+      color: var(--dropdown-menu-items-selected-color);
+      border-radius: 5px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

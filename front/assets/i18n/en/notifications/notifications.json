@@ -1,0 +1,14 @@
+{
+  "notifications":"Notifications",
+  "supervisor":"Supervisor",
+  "newNotifications": "You don't have notifications | You have {count} notification | You have {count} notifications",
+  "sent": "Notification sent",
+  "question": "Do you want to {state} the edition of {event}?",
+  "pending":"This event have a notification pending",
+  "title": "List of notifications",
+  "applicant":"Applicant",
+  "approver":"Approver",
+  "type": "Type",
+  "message": "You have a new notification.",
+  "eventNotificationUpdated":"An event has been updated, Please refresh the page!"
+}

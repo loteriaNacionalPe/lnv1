@@ -1,0 +1,44 @@
+@use 'sass:map';
+@use 'variables';
+
+$footer--light: (
+  "footer-bg": #fff,
+  "footer-border": map.get(variables.$theme-light,"general-border-components"),
+  "footer-color": #6a737c,
+);
+
+$footer--dark: (
+  "footer-bg": #201f1e,
+  "footer-border": map.get(variables.$theme-dark,"general-border-components"),
+  "footer-color": #747474,
+);
+
+.theme {
+  --footer-bg: #{map.get($footer--light, "footer-bg")};
+  --footer-color: #{map.get($footer--light, "footer-color")};
+  --footer-border: #{map.get($footer--light, "footer-border")};
+
+  &--dark{
+    --footer-bg: #{map.get($footer--dark, "footer-bg")};
+    --footer-color: #{map.get($footer--dark, "footer-color")};
+    --footer-border: #{map.get($footer--dark, "footer-border")};
+  }
+}
+
+footer.sticky-footer {
+  padding: 0.8rem 0;
+  flex-shrink: 0;
+  background-color: var(--footer-bg);
+  border-top: var(--footer-border);
+  .copyright {
+    line-height: 1;
+    font-size: 0.8rem;
+    color: var(--footer-color);
+  }
+}
+  
+body.sidebar-toggled {
+  footer.sticky-footer {
+    width: 100%;
+  }
+}

@@ -1,0 +1,113 @@
+@use 'sass:map';
+
+@use 'modules/variables';
+@use 'modules/breadcrumb';
+@use 'modules/chips';
+@use 'modules/sidebar';
+@use 'modules/header';
+@use 'modules/font';
+@use 'modules/footer';
+@use 'modules/tooltip';
+@use 'modules/buttons';
+@use 'modules/multiselect';
+@use 'modules/range';
+@use 'modules/inputs';
+@use 'modules/dropdown';
+@use 'modules/tables';
+@use 'modules/scroll';
+@use 'modules/tabs';
+@use 'modules/calendar';
+@use 'modules/panels';
+@use 'modules/cards';
+@use 'modules/charts';
+@use 'modules/modal';
+@use 'modules/select';
+@use 'modules/tree';
+@use 'modules/overlayPanel';
+
+
+$body--light: (
+  "body-container-bg":map.get(variables.$theme-light,"container-fluid-bg"),
+  "body-text-color": map.get(variables.$theme-light, "general-text-color"),
+);
+
+$body--dark: (
+  "body-container-bg":map.get(variables.$theme-dark,"container-fluid-bg"),
+  "body-text-color": map.get(variables.$theme-dark, "general-text-color"),
+);
+
+.theme{
+  --body-container-bg: #{map.get($body--light, "body-container-bg")};
+  --body-text-color: #{map.get($body--light, "body-text-color")};
+
+  &--dark{
+    --body-container-bg: #{map.get($body--dark, "body-container-bg")};
+    --body-text-color: #{map.get($body--dark, "body-text-color")};
+  }
+}
+
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--body-text-color);
+  line-height: 1.4;
+}
+
+
+
+
+
+.container-fluid {
+  background-color: var(--body-container-bg);
+}
+
+body {
+  color: var(--body-text-color);
+  background-color: #fff;
+  font-family: 'Segoe UI Variable';
+}
+
+
+
+
+#wrapper #content-wrapper {
+  height: 100vh;
+}
+
+#wrapper #content-wrapper { 
+  background-color: #fff;
+}
+
+
+
+
+small{
+  font-size:  variables.$font-size-inputs;
+}
+small.p-invalid{
+  color: #e24c4c;
+}
+small.p-warning{
+  color: #e2ba4c;
+}
+
+hr{
+  margin-top: 5px !important;
+  width: 100% !important;
+  border-top: 1px solid #d5d7da !important;
+  box-sizing: border-box;
+  opacity: 1
+}
+
+.bg-container{
+  background-color: variables.$btn-bg-normal ;
+  border-radius: variables.$border-radious ;
+}
+
+
