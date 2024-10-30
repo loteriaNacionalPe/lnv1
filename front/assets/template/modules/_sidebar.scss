@@ -1,0 +1,289 @@
+@use 'sass:map';
+@use 'variables';
+
+// FOR THEME COLORS
+$sidebar--light: (
+  "sidebar-bg-hover": map.get(variables.$colors--light,"hover-1"),
+  "sidebar-bg-active": map.get(variables.$colors--light,"active-1"),
+  "sidebar-sub-level-bg": map.get(variables.$colors--light, "menu-1"),
+
+  "sidebar-bg": #f6f6f6,
+  "sidebar-color": #001c40,
+  "sidebar-title-items": #113255,
+  "sidebar-border": map.get(variables.$theme-light, "general-border-components"),
+);
+
+$sidebar--dark: (
+  "sidebar-bg-hover": map.get(variables.$colors--dark,"hover-1"),
+  "sidebar-bg-active": map.get(variables.$colors--dark,"active-1"),
+  "sidebar-sub-level-bg": map.get(variables.$colors--dark, "menu-1"),
+
+  "sidebar-bg": #3b3a39,
+  "sidebar-color": #fff,
+  "sidebar-title-items": #f6f6f6,
+  "sidebar-border": map.get(variables.$theme-dark, "general-border-components"),
+);
+
+
+.theme {
+  --sidebar-bg-active: #{map.get($sidebar--light,"sidebar-bg-active")};
+  --sidebar-bg-hover: #{map.get($sidebar--light,"sidebar-bg-hover")};
+  --sidebar-sub-level-bg: #{map.get($sidebar--light,"sidebar-sub-level-bg")};
+
+
+  --sidebar-bg: #{map.get($sidebar--light,"sidebar-bg")};
+  --sidebar-items-color: #{map.get($sidebar--light,"sidebar-color")};
+  --sidebar-title-items: #{map.get($sidebar--light,"sidebar-title-items")};
+  --sidebar-border: #{map.get($sidebar--light, "sidebar-border")};
+
+
+  &--dark{
+    --sidebar-bg-active: #{map.get($sidebar--dark,"sidebar-bg-active")};
+    --sidebar-bg-hover: #{map.get($sidebar--dark,"sidebar-bg-hover")};
+    --sidebar-sub-level-bg: #{map.get($sidebar--dark,"sidebar-sub-level-bg")};
+    
+    --sidebar-bg: #{map.get($sidebar--dark,"sidebar-bg")};
+    --sidebar-items-color: #{map.get($sidebar--dark,"sidebar-color")};
+    --sidebar-title-items: #{map.get($sidebar--dark,"sidebar-title-items")};
+    --sidebar-border: #{map.get($sidebar--dark, "sidebar-border")};
+
+  }
+}
+// END THEME COLORS
+
+
+
+.ev-sidebar {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #001c40;
+    &:hover {
+      background-color: var(--sidebar-bg-hover);
+      font-weight: 500;
+      color: var(--sidebar-items-color);
+    }
+  }
+
+  .sidebar {
+    background-color: var(--sidebar-bg);
+    height: 100vh;
+    border-right: var(--sidebar-border);
+
+    .active-sidebarItem{
+      background-color: var(--sidebar-bg-active);
+    }    
+  
+    &__toggleButton {
+      width: 100%;
+      color: var(--sidebar-items-color);
+    }
+
+    &__group {
+
+      .text-item {
+        color: var(--sidebar-items-color);
+      }
+
+      flex-grow: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      
+      &__items {
+        list-style: none;
+        padding-left: 0;
+      }
+  
+      &__item {
+        // &.active {
+        //   .has-sub-level {
+        //     background-color: rgba(11, 34, 57, 0.08);
+        //   }
+        // }
+  
+        &__content {
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+          padding-top: 0.75rem;
+          padding-bottom: 0.75rem;
+          display: flex;
+          align-items: end;
+          border-radius: 0.25rem;
+          width: auto;
+          line-height: 1.2;
+          transition: all 0.4s;
+          margin: 1px 8px;
+          font-size: 0.875rem;
+          text-decoration: none;
+          
+          i {
+            color: var(--sidebar-items-color);
+          }
+    
+          .text-item {
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          &:hover {
+            background-color: var(--sidebar-bg-hover);
+            font-weight: 500;
+            color: var(--sidebar-items-color);
+          }
+        }
+      }
+    }
+
+    .brand {
+      display: flex;
+      background-color: var(--sidebar-bg);
+      padding: 5px 10px;
+      // border-bottom: 1px solid #e5e5e5;
+      
+      &-icon {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      &-text {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .sub-level {
+      padding-left: 1.5rem !important;
+      
+      &__top-item {
+        display: none;
+        span {
+          padding: 0.35rem 0.75rem;
+          width: 100%;
+          display: block;
+          font-weight: 800;
+          color: var(--sidebar-title-items);
+        }
+      }
+    }    
+  
+    &.toggled {
+      width: 3.5rem !important;
+      
+      .brand {
+        &-text {
+          display: none;
+        }
+      }
+
+      .sub-level {
+        display: none;
+        position: absolute;
+        left: 3.5rem;
+        width: 230px;
+        padding-left: 8px !important;
+        background-color: #f6f6f6;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: 1px solid #e3e6f0;
+        border-radius: 7px;
+        box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.24), 0 0 0.125rem rgba(0, 0, 0, 0.24) !important;
+        background-color: var(--sidebar-sub-level-bg);
+        z-index: 10;
+        transform: translate3d(0px, -38px, 0px);
+        transition: 0.2s;
+      }
+    
+      .has-content-list {
+        &:hover {
+          .sub-level, .sub-level:hover {
+            display: block;
+            .text-item {
+              display: block;
+              line-height: 1.2;
+            }
+            &__top-item {
+              display: block;
+            }
+          }
+        }
+      }  
+    }
+  }
+}
+
+// NO REFERENCIADAS, PERO APARECEN EN STYLES.MIN
+// .sidebar-dark #sidebarToggle::after {
+//   color: $color-text-secondary;
+// }
+
+// .sidebar-dark #sidebarToggle:hover {
+//   background-color: rgba(11, 34, 57, 0.08);
+// }
+
+// .sidebar-dark.toggled #sidebarToggle::after {
+//   color: $color-text-secondary;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// NO REFERENCIADAS
+
+// .calendar-nav {
+//   background: #eff3f6;
+//   border: 1px solid #cfd9e0;
+//   border-radius: 4px;
+//   .date-calendar {
+//     color: #515e79;
+//     align-items: center;
+//     display: flex;
+//     padding: 5px 15px;
+//     height: calc(1em + 0.75rem + 2px);
+//     border-radius: 0;
+//     background-color: rgba(11, 34, 57, 0.08);
+//     font-weight: 500;
+//     &:hover {
+//       background-color: rgba(11, 34, 57, 0.08);
+//       color: #183153;
+//     }
+//   }
+//   .btn-navigation {
+//     color: #515e79;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 32px;
+//     padding: 5px;
+//     &:hover {
+//       background-color: rgba(11, 34, 57, 0.08);
+//       color: #183153;
+//     }
+//   }
+// }

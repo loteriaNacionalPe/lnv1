@@ -1,0 +1,74 @@
+@use 'sass:map';
+@use 'variables';
+
+
+$tab--light: (
+  "tab-title-color": #001c40,
+  "tab-active-bg":map.get(variables.$colors--light, "active-1"),
+);
+
+$tab--dark: (
+  "tab-title-color": #fff,
+  "tab-active-bg": map.get(variables.$colors--dark, "active-1"),
+);
+
+.theme {
+  --tab-title-color: #{map.get($tab--light,"tab-title-color")};
+  --tab-active-bg: #{map.get($tab--light,"tab-active-bg")};
+
+  &--dark {
+    --tab-title-color: #{map.get($tab--dark,"tab-title-color")};
+    --tab-active-bg: #{map.get($tab--dark,"tab-active-bg")};
+  }
+}
+
+// For tabview in Calendar
+.p-tabview {
+  &-panels {
+    background-color: transparent !important;
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+  }
+
+  &-nav {
+    background-color: transparent !important;
+    display: flex;
+    align-items: end;
+    height: 2.5rem;
+    border-bottom: 1px solid var(--tab-active-bg) !important;
+
+    &-link{
+      background-color: transparent !important;
+      color: var(--tab-title-color) !important;
+      height: 1.5rem;
+      border-bottom: 1px solid var(--tab-active-bg) !important;
+      &:focus, &:hover {
+        box-shadow: none !important;
+        outline: none !important;
+        border: none !important;
+      }
+    }
+  }
+
+  .p-highlight {
+    color: #001c40;
+    font-weight: 600;
+    .p-tabview-nav-link {
+      border: none !important;
+      background-color: var(--tab-active-bg) !important;
+      
+      &::before {
+        display: block;
+        content: ' ';
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        height: 4px;
+        border-radius: 2px;
+        bottom: 0px;
+        background-image: linear-gradient(270deg, #f93804 0%, #ff8700 100%) !important;
+      }
+    }
+  }
+
+}

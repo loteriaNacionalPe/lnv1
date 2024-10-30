@@ -1,0 +1,177 @@
+@use 'sass:map';
+@use 'variables';
+
+$header-height: 6vh;
+
+// For THEME COLORS
+$header--light: (
+  "header-bg-active-button": map.get(variables.$colors--light, "active-1"),
+  "header-items-color": map.get(variables.$colors--light,"primary"),
+  "header-sub-items-hover": map.get(variables.$colors--light, "hover-1"),
+  "header-sub-items-selected-bg": map.get(variables.$colors--light, "active-2"),
+  "header-sub-items-color": map.get(variables.$colors--light,"primary"),
+  "header-sub-items-bg": map.get(variables.$colors--light,"menu-1"),
+
+  "header-bg": #f6f6f6,
+  "header-border": map.get(variables.$theme-light, "general-border-components"),
+  "header-sub-items-selected-color": #42434d,
+);
+
+$header--dark: (
+  "header-bg-active-button": map.get(variables.$colors--dark, "active-1"),
+  "header-sub-items-hover": map.get(variables.$colors--dark, "hover-1"),
+  "header-sub-items-selected-bg": map.get(variables.$colors--dark, "active-2"),
+  "header-items-color": map.get(variables.$colors--dark,"primary"),
+  "header-sub-items-color": map.get(variables.$colors--dark,"primary"),
+  "header-sub-items-bg": map.get(variables.$colors--dark,"menu-1"),
+
+  "header-bg": #201f1e,
+  "header-border": map.get(variables.$theme-dark, "general-border-components"),
+  "header-sub-items-selected-color": #3b3a3b,
+);
+
+.theme {
+  --header-bg-active-button: #{map.get($header--light,"header-bg-active-button")};
+  --header-sub-items-hover: #{map.get($header--light,"header-sub-items-hover")};
+  --header-items-color: #{map.get($header--light,"header-items-color")};
+  --header-sub-items-color: #{map.get($header--light,"header-sub-items-color")};
+
+  --header-bg: #{map.get($header--light,"header-bg")};
+  --header-border: #{map.get($header--light,"header-border")};
+  --header-sub-items-bg: #{map.get($header--light,"header-sub-items-bg")};
+  --header-sub-items-selected-bg: #{map.get($header--light,"header-sub-items-selected-bg")};
+  --header-sub-items-selected-color: #{map.get($header--light,"header-sub-items-selected-color")};
+  
+  &--dark{
+    --header-bg-active-button: #{map.get($header--dark,"header-bg-active-button")};
+    --header-sub-items-hover: #{map.get($header--dark, "header-sub-items-hover")};
+    --header-items-color: #{map.get($header--dark,"header-items-color")};
+    --header-sub-items-color: #{map.get($header--dark,"header-sub-items-color")};
+
+    --header-bg: #{map.get($header--dark,"header-bg")};
+    --header-border: #{map.get($header--dark,"header-border")};
+    --header-sub-items-bg: #{map.get($header--dark,"header-sub-items-bg")};
+    --header-sub-items-selected-bg: #{map.get($header--dark,"header-sub-items-selected-bg")};
+    --header-sub-items-selected-color: #{map.get($header--dark,"header-sub-items-selected-color")};
+  }
+}
+
+
+.header__slot {
+  height: $header-height;
+  background-color: var(--header-bg);
+  border-bottom: var(--header-border);
+
+  &__buttons {
+    height: $header-height; //because of the value specified in default.vue
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    
+    button {
+      color: var(--header-items-color) !important;
+      background-color: transparent !important;
+      border: none !important;
+      &:focus{
+          outline-offset: none !important;
+          box-shadow: none !important;
+      }
+    }
+
+    .active-button{
+      background-color: var(--header-bg-active-button) !important;
+    }
+  }
+
+  &__filterEvents{
+    position: fixed;
+    top: 0;
+    right: 8.5%;
+    height: $header-height;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.topbar-content {
+    height: $header-height;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-left: 0;
+    padding: 5px 10px;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    background-color: var(--header-bg);
+    border-bottom: var(--header-border);
+    .navbar-nav {
+      flex-direction: row;
+      .nav-item {
+        margin: 0 2px;
+      }
+    }
+}
+
+.header{
+  &-option {
+  position: relative;
+  padding: 5px;
+  width: 37px;
+  justify-content: center;
+  display: flex;
+  height: 35px;
+  align-items: center;
+  border-radius: 4px;
+  text-decoration: none !important;
+  border: none;
+  background: transparent;
+      &:hover {
+          background-color: rgba(11, 34, 57, 0.08);
+          color: #001c40;
+      }
+      &:focus {
+          box-shadow: none;
+          outline: none;
+      }
+  }
+
+  &-item{
+      color: var(--header-items-color) !important;
+  }
+
+  &__sub-items {
+    
+    background: var(--header-sub-items-bg);
+
+    .p-button-sm {
+      background-color: transparent !important;
+      border: none !important;
+      color: var(--header-sub-items-color);  
+      &:hover{
+        background-color: var(--header-sub-items-hover) !important;
+        color: var(--header-sub-items-color) !important;  
+      }
+    }
+
+    &-unselected {
+      color: var(--header-sub-items-color);  
+      &:hover {
+        color: var(--header-sub-items-color);  
+        background-color: var(--header-sub-items-hover);
+      }
+    }
+
+    &-selected, &-selected:hover {
+      div p {
+        font-weight: bold;
+      }
+      background: var(--header-sub-items-selected-bg);
+      color: var(--header-sub-items-selected-color);
+      border-radius: 5px;
+    }
+  }
+
+}

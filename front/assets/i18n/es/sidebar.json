@@ -1,0 +1,120 @@
+{
+  "donwtimesSection": [
+    {
+        "id": "side-EventManagement",
+        "name": "Eventos",
+        "icon": "fas fa-list",
+        "items": [{
+            "id": "events",
+            "name": "Eventos",
+            "url": "/event_management/events",
+            "permission": ""
+        }]
+    },
+    {
+        "id": "side-reports",
+        "name": "Reportes",
+        "icon": "fas fa-chart-bar",
+        "items": [
+              {
+                "id": "breakdownAnalysis",
+                "name": "Análisis de desglose",
+                "url": "/reports/breakdownAnalysis",
+                "permission": "view_breakdownAnalysis"
+              },
+              {
+                  "id": "crushingDetentionsReport",
+                  "name": "Reporte de detenciones de trituración",
+                  "url": "/reports/crushingDetentionsReport",
+                  "permission": "view_crushingDetentionsReport"
+              }
+        ]
+    },
+    {
+      "id": "side-utility",
+      "name": "Utilitarios",
+      "icon": "fa fa-calculator",
+      "items": [
+          {
+              "id": "schedule",
+              "name": "Calendario",
+              "url": "/utilitarian/schedule",
+              "permission": "view_calendar"
+          },
+          {
+              "id": "budgetAndForecast",
+              "name": "Presupuesto y pronóstico",
+              "url": "/utilitarian/budgetAndForecast",
+              "permission": "view_budgetAndForecast"
+          }
+      ]
+    }
+  ],
+  "adminSection": [{
+          "id": "side-manage",
+          "name": "Administración",
+          "icon": "fa fa-folder",
+          "items": [{
+                "id": "imputations",
+                "name": "Imputaciones",
+                "url": "/administration/imputations",
+                "permission": "view_imputations"
+              },
+              {
+                "id": "equipment-types",
+                "name": "Tipo de Equipos",
+                "url": "/administration/equipmenttypes",
+                "permission": "view_equipmenttypes"
+              },
+              {
+                "id": "equipments",
+                "name": "Equipos",
+                "url": "/administration/equipments",
+                "permission": "view_equipment"
+              },
+              {
+                "id": "maintanable-list",
+                "name": "Listas Mantenibles",
+                "url": "/administration/maintanableList",
+                "permission": "view_maintanablelist"
+              },
+              {
+                  "id": "indicators",
+                  "name": "Indicadores",
+                  "url": "/administration/indicator",
+                  "permission": "view_indicator"
+              }
+          ]
+      },
+      {
+          "id": "side-security",
+          "name": "Seguridad",
+          "icon": "fa fa-users",
+          "items": [{
+                  "id": "users",
+                  "name": "Usuarios",
+                  "url": "/security/user",
+                  "permission": "view_user"
+              },
+              {
+                  "id": "role",
+                  "name": "Roles y permisos",
+                  "url": "/security/role",
+                  "permission": "view_group"
+              },
+              {
+                  "id": "logEntry",
+                  "name": "Logs",
+                  "url": "/security/log",
+                  "permission": "view_logentry"
+              },
+              {
+                "id": "notifications",
+                "name": "Notificaciones",
+                "url": "/notifications/notifications",
+                "permission": "view_notification"
+              }
+          ]
+      }
+  ]
+}

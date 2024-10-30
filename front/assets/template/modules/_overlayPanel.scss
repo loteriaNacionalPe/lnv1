@@ -1,0 +1,70 @@
+@use 'sass:map';
+@use 'variables';
+ 
+$overlaypanel--light: (
+    "overlaypanel-bg": #fff,
+    "overlaypanel-label-color": #495057,
+    "overlaypanel-divider-color": #495057,
+    "overlaypanel-divider-border": #dee2e6,
+    "overlaypanel-divider-bg": #fff
+);
+
+
+$overlaypanel--dark: (
+    "overlaypanel-bg": #323130,
+    "overlaypanel-label-color": #fff,
+    "overlaypanel-divider-color": #d1d1d1,
+    "overlaypanel-divider-border": #d1d1d1,
+    "overlaypanel-divider-bg": #323130
+);
+
+.theme {
+    --overlaypanel-bg: #{map.get($overlaypanel--light, "overlaypanel-bg")};
+    --overlaypanel-label-color: #{map.get($overlaypanel--light, "overlaypanel-label-color")};
+    --overlaypanel-divider-color: #{map.get($overlaypanel--light, "overlaypanel-divider-color")};
+    --overlaypanel-divider-border: #{map.get($overlaypanel--light, "overlaypanel-divider-border")};
+    --overlaypanel-divider-bg: #{map.get($overlaypanel--light, "overlaypanel-divider-bg")};
+
+    &--dark {
+        --overlaypanel-bg: #{map.get($overlaypanel--dark, "overlaypanel-bg")};
+        --overlaypanel-label-color: #{map.get($overlaypanel--dark, "overlaypanel-label-color")};
+        --overlaypanel-divider-color: #{map.get($overlaypanel--dark, "overlaypanel-divider-color")};
+        --overlaypanel-divider-border: #{map.get($overlaypanel--dark, "overlaypanel-divider-border")};
+        --overlaypanel-divider-bg: #{map.get($overlaypanel--dark, "overlaypanel-divider-bg")};
+    }
+}
+
+
+.p-overlaypanel {
+    background: var(--overlaypanel-bg) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: variables.$border-radious  !important;
+      
+    &::after{
+        border-bottom-color: var(--overlaypanel-bg) !important;
+    }
+
+    &::before{
+        border-bottom-color: rgba(255,255,255,0.2) !important;
+    }
+
+    label { 
+        color: var(--overlaypanel-label-color);
+    }
+
+    
+    .p-divider {
+
+        &:before {
+            border-top: 1px solid var(--overlaypanel-divider-border) !important;
+        }
+
+
+        &-content {
+            background: var(--overlaypanel-divider-bg) !important;
+            color: var(--overlaypanel-divider-color) !important;
+        }
+    }
+
+
+}

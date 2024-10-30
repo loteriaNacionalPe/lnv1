@@ -1,0 +1,25 @@
+@use 'variables';
+
+.p-chips, .p-chips-multiple-container{
+  width: 100%;
+  height: variables.$height-inputs;
+}
+.p-chips-token{
+  height: variables.$height-inputs - 0.6rem;
+}
+.p-chips-text, .p-chips-token{
+  font-size: variables.$font-size-general;
+}
+
+// CHIPS in filter events
+.filter-chips {
+  width: 100%;
+  height: 3.2rem;
+
+  .p-chips-multiple-container{
+    overflow-x: scroll !important;
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
+    height: 3rem !important;
+  }
+}

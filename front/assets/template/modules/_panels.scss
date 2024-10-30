@@ -1,0 +1,57 @@
+@use 'sass:map';
+@use 'cards';
+
+
+$panel--light: (
+    "panel-bg": map.get(cards.$card--light, "card-bg"),
+    "panel-color": map.get(cards.$card--light, "card-color"),
+    "panel-shadow":map.get(cards.$card--light, "card-shadow"),
+    "panel-border":map.get(cards.$card--light, "card-border"),
+);
+
+$panel--dark: (
+    "panel-bg": map.get(cards.$card--dark, "card-bg"),
+    "panel-color": map.get(cards.$card--dark, "card-color"),
+    "panel-shadow":map.get(cards.$card--dark, "card-shadow"),
+    "panel-border":map.get(cards.$card--dark, "card-border"),
+);
+
+.theme {
+    --panel-bg: #{map.get($panel--light,"panel-bg")};
+    --panel-color: #{map.get($panel--light,"panel-color")};
+    --panel-shadow: #{map.get($panel--light,"panel-shadow")};
+    --panel-border: #{map.get($panel--light,"panel-border")};
+
+    &--dark {
+        --panel-bg: #{map.get($panel--dark,"panel-bg")};
+        --panel-color: #{map.get($panel--dark,"panel-color")};
+        --panel-shadow: #{map.get($panel--dark,"panel-shadow")};
+        --panel-border: #{map.get($panel--dark,"panel-border")};
+    }
+}
+
+
+
+.p-panel {
+    background-color: var(--panel-bg);
+    color: var(--panel-color);
+    box-shadow: var(--panel-shadow);
+    border: var(--panel-border);
+
+    &-header{
+        height: 2.5rem;
+        background-color: transparent !important;
+        color: var(--panel-color) !important;
+        border: none !important;
+        border-bottom: var(--panel-border) !important;
+    }
+
+    &-content {
+        background-color: transparent !important;
+        color: var(--panel-color) !important;
+        border: none !important;
+    }
+}
+
+
+

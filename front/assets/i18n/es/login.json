@@ -1,0 +1,8 @@
+{
+  "login": "Iniciar sesión",
+  "logout": "Cerrar sesión",
+  "invalidCredentials":"Usuario o contraseña incorrectos",
+  "error":"Ocurrió un error inesperado. Intente de nuevo.",
+  "noCredentials": "Credenciales no proporcionadas"
+
+}

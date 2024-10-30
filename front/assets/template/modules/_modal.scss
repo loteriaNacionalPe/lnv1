@@ -1,0 +1,39 @@
+@use 'sass:map';
+
+$modal--light: (
+    "modal-bg-out": rgba(0,0,0,0.3),
+    "modal-bg-header": #f8f9fc,
+    "modal-bg-in" : #fff,
+);
+
+$modal--dark: (
+    "modal-bg-out": rgba(255,255,255,0.3),
+    "modal-bg-header": #404040,
+    "modal-bg-in" : #323130,
+);
+
+.theme {
+    --modal-bg-out: #{map.get($modal--light, "modal-bg-out")};
+    --modal-bg-header: #{map.get($modal--light, "modal-bg-header")};
+    --modal-bg-in: #{map.get($modal--light, "modal-bg-in")};
+
+
+    &--dark{
+        --modal-bg-out: #{map.get($modal--dark, "modal-bg-out")};
+        --modal-bg-header: #{map.get($modal--dark, "modal-bg-header")};
+        --modal-bg-in: #{map.get($modal--dark, "modal-bg-in")};
+    }
+}
+
+.modal {
+background: var(--modal-bg-out);
+
+    &-content {
+        background: var(--modal-bg-in);
+        box-shadow: 0px 0px 18px 3px rgba(0,0,0,0.3);
+    }
+
+    &-header {
+        background: var(--modal-bg-header) !important;
+    }
+}

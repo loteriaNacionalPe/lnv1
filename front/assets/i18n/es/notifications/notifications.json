@@ -1,0 +1,14 @@
+{
+  "notifications":"Notificaciones",
+  "supervisor":"Supervisor",
+  "newNotifications": "No tienes notificaiones | Tienes {count} notificación | Tienes {count} notificaciones",
+  "sent": "Notificación enviada",
+  "question": "¿Quieres {state} la edición de {event}?",
+  "pending":"Este evento tiene una notificación pendiente",
+  "title": "Lista de notificaciones",
+  "sender":"Solicitante",
+  "approver":"Aprovador",
+  "type": "Tipo",
+  "message": "Tienes una nueva notificación.",
+  "eventNotificationUpdated":"Se ha actualizado un evento. ¡Actualice la página!"
+}

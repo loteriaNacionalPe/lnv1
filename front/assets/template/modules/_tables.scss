@@ -1,0 +1,158 @@
+@use 'sass:map';
+@use 'variables';
+
+$table--light: (
+    "table-head-bg": #f8f9fa,
+    "table-head-color": #000,
+    "table-head-border": #e3e6f0,
+    "table-body-bg": #fff,
+    "table-body-color": #3d3d43,
+    "table-body-border": #e3e6f0,
+    "table-row-hover": rgba(0,0,0,.075),
+);
+
+$table--dark: (
+    "table-head-bg": #2b2b2b,
+    "table-head-color": #fff,
+    "table-head-border": #fff,
+    "table-body-bg": #3a3a3a,
+    "table-body-color": #fff,
+    "table-body-border": #6a6b6c,
+    "table-row-hover": #656565,
+);
+
+
+.theme {
+    --table-head-bg: #{map.get($table--light, "table-head-bg")};
+    --table-head-color: #{map.get($table--light, "table-head-color")};
+    --table-head-border: #{map.get($table--light, "table-head-border")};
+    --table-body-bg: #{map.get($table--light, "table-body-bg")};
+    --table-body-color: #{map.get($table--light, "table-body-color")};
+    --table-body-border: #{map.get($table--light, "table-body-border")};
+    --table-row-hover: #{map.get($table--light, "table-row-hover")};
+
+    &--dark{
+        --table-head-bg: #{map.get($table--dark, "table-head-bg")};
+        --table-head-color: #{map.get($table--dark, "table-head-color")};
+        --table-head-border: #{map.get($table--dark, "table-head-border")};
+        --table-body-bg: #{map.get($table--dark, "table-body-bg")};
+        --table-body-color: #{map.get($table--dark, "table-body-color")};
+        --table-body-border: #{map.get($table--dark, "table-body-border")};
+        --table-row-hover: #{map.get($table--dark, "table-row-hover")};
+    }
+}
+
+
+
+.table-responsive{
+    font-size: variables.$font-size-general;
+    table {
+        thead {
+            th {
+                background: var(--table-head-bg);
+                color: var(--table-head-color);
+                border: 1px solid var(--table-head-border);
+            }
+        }
+        tbody{
+            tr {
+                background: var(--table-body-bg);
+                th,td {
+                    color: var(--table-body-color);
+                    background: var(--table-body-bg);
+                    border: 1px solid var(--table-body-border);
+                }
+                
+                &:hover {
+                    background-color: var(--table-row-hover);
+                    th,td{
+                        color:var(--table-body-color);
+                    }
+                }
+            }
+        } 
+            
+    }
+}
+
+$pagination--light: (
+    "pagination-border": #dddfeb,
+    "pagination-hover-bg": #e9ecef,
+    "pagination-color": #495057
+);
+
+$pagination--dark: (
+    "pagination-border": rgba(255,255,255,0.4),
+    "pagination-hover-bg": #525150,
+    "pagination-color": #fff
+);
+
+.theme {
+    --pagination-border: #{map.get($pagination--light, "pagination-border")};
+    --pagination-hover-bg: #{map.get($pagination--light, "pagination-hover-bg")};
+    --pagination-color: #{map.get($pagination--light, "pagination-color")};
+
+
+    &--dark{
+        --pagination-border: #{map.get($pagination--dark, "pagination-border")};
+        --pagination-hover-bg: #{map.get($pagination--dark, "pagination-hover-bg")};
+        --pagination-color: #{map.get($pagination--dark, "pagination-color")};
+    }
+}
+
+// PAGINATION styles
+.pagination {
+    .page-item {
+        .page-link {
+            background: transparent !important;
+            border: 1px solid var(--pagination-border) !important;
+            color: var(--pagination-color) !important;
+
+            &:hover {
+                background: var(--pagination-hover-bg) !important;
+                cursor: pointer;
+            }
+        }
+
+        &.active {
+            .page-link{
+                background: #607d8b !important;
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+
+
+
+// Styles for Events table
+.table-responsive {
+    height: calc(100% - 40px)!important;
+
+    .table-events {
+      // tbody tr td input {
+      //   width: fit-content !important;
+      // }
+        width: max-content;
+
+      thead {
+        tr {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        th {
+            border: none !important;
+            box-shadow: 
+                inset 1px 1px 0 var(--table-head-border),
+                inset -1px -1px 0 var(--table-head-border);
+            max-width: 20rem;
+        }
+      }
+
+      tbody tr td { 
+        font-size: 0.7rem;
+      }
+    }
+  }

@@ -1,0 +1,70 @@
+@use 'sass:map';
+
+$tree--light:(
+    "tree-border": #dee2e6,
+    "tree-node-bg-hover": #e9ecef,
+    "tree-node-bg-highlight": #e3f2fd,
+    "tree-color": #495057,
+);
+
+$tree--dark:(
+    "tree-border": #524f4f,
+    "tree-node-bg-hover": #525150,
+    "tree-node-bg-highlight": #495159,
+    "tree-color": #fff,
+);
+
+.theme {
+    --tree-border: #{map.get($tree--light, "tree-border")};
+    --tree-node-bg-hover: #{map.get($tree--light, "tree-node-bg-hover")};
+    --tree-node-bg-highlight: #{map.get($tree--light, "tree-node-bg-highlight")};
+    --tree-color: #{map.get($tree--light, "tree-color")};
+
+    &--dark {
+        --tree-border: #{map.get($tree--dark, "tree-border")};
+        --tree-node-bg-hover: #{map.get($tree--dark, "tree-node-bg-hover")};
+        --tree-node-bg-highlight: #{map.get($tree--dark, "tree-node-bg-highlight")};
+        --tree-color: #{map.get($tree--dark, "tree-color")};
+    }
+}
+
+
+.p-tree {
+    background-color: transparent !important;
+    border: 1px solid var(--tree-border) !important;
+
+    &-filter-container{
+        .p-inputtext{
+            border:1px solid var(--tree-border) !important;
+        }
+    }
+
+    &-container{
+        .p-treenode-content{
+            color: var(--tree-color) !important;
+
+            &:hover {
+                background-color: var(--tree-node-bg-hover) !important;
+            }
+
+            &:focus{
+                box-shadow: none !important;
+            }
+        }
+
+        .p-treenode-content.p-highlight {
+            background-color: var(--tree-node-bg-highlight) !important;
+        }
+    }
+
+    .p-tree-toggler{
+        color: #8c8c8c !important;
+        &:hover {
+            color: #8c8c8c !important;
+            background: transparent !important;
+        }
+        &:focus {
+            box-shadow: none !important;
+        }
+    }
+}

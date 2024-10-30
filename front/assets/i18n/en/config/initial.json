@@ -1,0 +1,14 @@
+{
+  "title":"Initial settings",
+  "originData": "Origin data",
+  "database": "Database",
+  "host": "Host",
+  "port": "Port",
+  "api":"API",
+  "databaseName": "Database name",
+  "serverName": "Server name",
+  "firstElemenet":"Fisrt element",
+  "templateName":"Template name",
+  "business":"Business",
+  "attribute":"Attribute | Attributes"
+}

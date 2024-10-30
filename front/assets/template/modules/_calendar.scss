@@ -1,0 +1,189 @@
+@use 'sass:map';
+@use 'variables';
+
+
+$calendar--light: (
+  "calendar-datepicker-bg": #fff,
+  "calendar-datepicker-color": #495057,
+  "calendar-monthpicker-bg-hover": #e9ecef,
+  "calendar-monthpicker-bg-highlight": #E3F2FD,
+);
+
+$calendar--dark: (
+  "calendar-datepicker-bg": #323130,
+  "calendar-datepicker-color": #fff,
+  "calendar-monthpicker-bg-hover": #525150,
+  "calendar-monthpicker-bg-highlight": #607d8b,
+);
+
+.theme {
+  --calendar-datepicker-bg: #{map.get($calendar--light, "calendar-datepicker-bg")};
+  --calendar-datepicker-color: #{map.get($calendar--light, "calendar-datepicker-color")};
+  --calendar-monthpicker-bg-hover: #{map.get($calendar--light, "calendar-monthpicker-bg-hover")};
+  --calendar-monthpicker-bg-highlight: #{map.get($calendar--light, "calendar-monthpicker-bg-highlight")};
+
+  &--dark {
+    --calendar-datepicker-bg: #{map.get($calendar--dark, "calendar-datepicker-bg")};
+    --calendar-datepicker-color: #{map.get($calendar--dark, "calendar-datepicker-color")};
+    --calendar-monthpicker-bg-hover: #{map.get($calendar--dark, "calendar-monthpicker-bg-hover")};
+    --calendar-monthpicker-bg-highlight: #{map.get($calendar--dark, "calendar-monthpicker-bg-highlight")};
+  }
+}
+
+
+table {
+  .p-calendar{
+    .p-inputtext{
+      border: none; //table in schedule (edit calendar)
+    }
+  }
+}
+
+
+.p-calendar {
+  width: 100%;
+  height: variables.$height-inputs;
+  height: variables.$height-inputs; //Porque es cuadrado
+  font-size: variables.$font-size-inputs;
+
+  .p-highlight {
+    color: var(--calendar-datepicker-color) !important;
+    background: var(--calendar-monthpicker-bg-highlight) !important;
+  }
+
+  span:not(.p-link span):hover {
+    color: var(--calendar-datepicker-color) !important;
+    background: var(--calendar-monthpicker-bg-hover) !important;
+  }
+
+  .p-datepicker {
+    background: var(--calendar-datepicker-bg) !important;
+    border: 1px solid rgba(255,255,255,0.4) !important;
+    color: var(--calendar-datepicker-color) !important;
+
+    .p-link {
+      &:hover {
+        background: transparent !important;
+        border: none !important;
+      }
+
+      &:focus {
+        box-shadow: none !important;
+      }
+    }
+
+    &-header{
+      background: transparent !important;
+      height: 2rem;
+      .pi{
+        font-size: variables.$font-size-inputs;
+      }
+    }
+
+    &-title {
+      line-height: 2rem;
+      .p-link,span {
+        color: var(--calendar-datepicker-color) !important;
+        &:focus {
+          box-shadow: none !important;
+        }
+      }
+      .p-datepicker-month{
+        padding-right: 0;
+      }
+      .p-link{
+        font-size: variables.$font-size-inputs;
+      }
+    }
+
+    &-calendar{
+      font-size: variables.$font-size-inputs;
+      td{
+        padding: 0 !important;
+      }
+    }
+    
+    &-yearpicker {
+      min-width: 11rem !important;
+      font-size: variables.$font-size-inputs !important;
+    }
+
+    &.p-datepicker-timeonly {
+      min-width: 100% !important;
+    } 
+
+    .p-timepicker {
+      padding: 0;
+      span {
+        font-size: 0.8rem;
+      }
+
+      button {
+
+        span:hover {
+          background: transparent !important;
+        }
+        
+        &:hover {
+          background: transparent !important;
+        }
+
+        &:focus {
+          box-shadow: none !important;
+        }
+      }
+    }
+  }
+
+  .p-monthpicker {
+    &-month {
+      &.p-highlight {
+        color: var(--calendar-datepicker-color) !important;
+        background: var(--calendar-monthpicker-bg-highlight) !important;
+      }
+
+      &:hover {
+        color: var(--calendar-datepicker-color) !important;
+        background: var(--calendar-monthpicker-bg-hover) !important;
+      }
+      &:focus { 
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .p-yearpicker {
+    &-year {
+      &.p-highlight {
+        color: var(--calendar-datepicker-color) !important;
+        background: var(--calendar-monthpicker-bg-highlight) !important;
+      }
+
+      &:hover {
+        color: var(--calendar-datepicker-color) !important;
+        background: var(--calendar-monthpicker-bg-hover) !important;
+      }
+      &:focus { 
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .p-inputtext {
+    text-align: center;
+    height: 100%;
+    font-size: variables.$font-size-inputs;
+    
+    &:disabled {
+      opacity: 0.8 !important;
+      border: none !important;
+      background-color: transparent !important;
+    }
+  }
+}
+
+table {
+  .p-calendar {
+    height: 100% !important;
+  }
+}

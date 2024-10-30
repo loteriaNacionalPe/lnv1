@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use 'variables';
+
+$breadcrumb--light: (
+  "breadcrumb-bg": map.get(variables.$theme-light, "card-bg"),
+  "breadcrumb-shadow": map.get(variables.$theme-light, "card-shadow"),
+  "breadcrumb-border": map.get(variables.$theme-light, "card-border"),
+  "breadcrumb-color": #495057,
+);
+
+$breadcrumb--dark: (
+  "breadcrumb-bg": map.get(variables.$theme-dark, "card-bg"),
+  "breadcrumb-shadow": map.get(variables.$theme-dark, "card-shadow"),
+  "breadcrumb-border": map.get(variables.$theme-dark, "card-border"),
+  "breadcrumb-color": #fff,
+);
+
+.theme {
+  --breadcrumb-bg: #{map.get($breadcrumb--light, "breadcrumb-bg")};
+  --breadcrumb-shadow: #{map.get($breadcrumb--light, "breadcrumb-shadow")};
+  --breadcrumb-border: #{map.get($breadcrumb--light, "breadcrumb-border")};
+  --breadcrumb-color: #{map.get($breadcrumb--light, "breadcrumb-color")};
+
+  &--dark {
+    --breadcrumb-bg: #{map.get($breadcrumb--dark, "breadcrumb-bg")};
+    --breadcrumb-shadow: #{map.get($breadcrumb--dark, "breadcrumb-shadow")};
+    --breadcrumb-border: #{map.get($breadcrumb--dark, "breadcrumb-border")};
+    --breadcrumb-color: #{map.get($breadcrumb--dark, "breadcrumb-color")}; 
+  }
+}
+
+
+.p-breadcrumb{
+  background-color: var(--breadcrumb-bg) !important;
+  box-shadow: var(--breadcrumb-shadow) !important;
+  border: var(--breadcrumb-border) !important;
+
+  .p-menuitem-text, .p-menuitem-icon, .p-breadcrumb-chevron{
+    color: var(--breadcrumb-color) !important;
+  }
+}
