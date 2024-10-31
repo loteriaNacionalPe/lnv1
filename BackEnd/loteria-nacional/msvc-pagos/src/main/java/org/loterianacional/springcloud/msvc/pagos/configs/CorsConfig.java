@@ -11,14 +11,14 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/authless/**")
-                .allowedOrigins("*")
+                .allowedOrigins("http://localhost:3000/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Authorization", "Content-Type", "Origin", "Accept")
                 .allowCredentials(false)
                 .maxAge(3600);
 
         registry.addMapping("/api/pagos/**")
-                .allowedOrigins("*")
+                .allowedOrigins("http://localhost:3000/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("Authorization", "Content-Type", "Origin", "Accept")
                 .allowCredentials(false)

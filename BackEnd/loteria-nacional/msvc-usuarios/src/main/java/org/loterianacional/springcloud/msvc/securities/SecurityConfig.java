@@ -30,7 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/authless/**").permitAll()
                         .requestMatchers("/api/usuarios/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/usuarios/seller/**").hasAnyRole("SELLER", "ADMIN")
-                        .requestMatchers("/api/usuarios/user/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/usuarios/user/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManagement -> sessionManagement
