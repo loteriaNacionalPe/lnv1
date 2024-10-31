@@ -1,7 +1,6 @@
 <template>
   <client-only>
     <div id="wrapper">
-      <Sidebar style="height:100vh"/>
       <div id="content-wrapper" class="scroll">
         <div id="content" style="height: 100vh;" class="d-flex flex-column">
           <div class="d-flex align-items-center">
@@ -45,8 +44,6 @@ export default {
   },
   beforeMount(){
     // validate if it's the first login of the user
-    if(this.$auth.user.is_first_login)
-      window.location.href = '/user/changepassword'
     const content = document.getElementsByTagName("HTML")[0]
     content.classList.add("theme")
     

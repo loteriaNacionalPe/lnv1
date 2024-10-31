@@ -14,6 +14,7 @@
 import CustomTable from '~/components/shared/Table.vue'
 import CustomModal from '@/components/shared/Modal.vue'
 import SignUpForm from '@/components/shared/forms/SignUpForm.vue'
+import { userAxios } from '~/plugins/axios'
 
 export default {
   components: {
@@ -39,7 +40,7 @@ export default {
   },
   methods: {
     searchUsers() {
-      this.$axios.$get('api/usuarios/')
+      userAxios.get('api/usuarios/')
       .then((response) => {
         this.registers = response
       })
@@ -54,7 +55,7 @@ export default {
         this.searchUsers()
       })
       .catch(() => {
-        this.$makeToast("error", this.$t("app").error)
+        this.$makeToast("error", "Error")
         this.$showLoader(false)
       })
     },

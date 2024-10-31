@@ -60,7 +60,7 @@ export default (context, inject) => {
   // create a toast
   function makeToast(variant = null, message = null) {
     // variant values: info, success, error, warn
-    this.$toast.add({ severity: variant, summary: this.$t("app").headerToast, detail: message, life: 5000 })
+    this.$toast.add({ severity: variant, summary: "", detail: message, life: 5000 })
   }
   //create a dialog to confirm o reject an acction
   function confirmDialog(message, title, emit = "confirm", data = null, op = null, attr = null) {

@@ -7,7 +7,7 @@
     <div class="col-auto pr-0" style="display: -webkit-box;">
       <span class="p-input-icon-left">
         <i class="pi pi-search" />
-        <InputText type="text" class="p-inputtext-sm" :placeholder="$t('app').search" v-model="search" @keyup="doSearch($event)" v-tooltip.bottom="$t('app.pressEnter')"/>
+        <InputText type="text" class="p-inputtext-sm" placeholder="Buscar" v-model="search" @keyup="doSearch($event)" v-tooltip.bottom="'Presiona Enter'"/>
       </span>
 
       <PrimeButton icon="fa-regular fa-plus" class="p-button-sm p-button-primary ml-2" @click="$emit('click')" v-if="permissions.canCreate"/>
@@ -18,7 +18,7 @@
           </a>
           <!-- Dropdown - Language -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow" aria-labelledby="alertsDropdown">
-            <h6 class="dropdown-header text-center">{{ $t("app").options }}</h6>
+            <h6 class="dropdown-header text-center">Opciones</h6>
             <slot name="options"/>
           </div>
         </li>

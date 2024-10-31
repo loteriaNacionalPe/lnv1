@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto " style="width: fit-content;">
-    <PrimeButton icon="pi pi-check" :label="$t('app').save" class="p-button-sm" @click="$emit('save')" :disabled="disabledSaveButton"/>
-    <PrimeButton v-if="showCancelButton" icon="pi pi-times" :label="$t('app').cancel" class="p-button-sm p-button-secondary" style="margin-left: .5em" @click="$emit('cancel')" />
+    <PrimeButton icon="pi pi-check" :label="Guardar" class="p-button-sm" @click="$emit('save')" :disabled="disabledSaveButton"/>
+    <PrimeButton v-if="showCancelButton" icon="pi pi-times" :label="Cancelas" class="p-button-sm p-button-secondary" style="margin-left: .5em" @click="$emit('cancel')" />
   </div>
 </template>
 <script>

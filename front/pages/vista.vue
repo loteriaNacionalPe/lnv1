@@ -1,74 +1,79 @@
 <template>
-  <div class="content-page">
+  <div>
     <header class="header">
-      <h1 class="header__title">Lotería Nacional</h1>
-
-      <nav class="header__nav">
-        <ul>
-          <li class="nav__item"><a href="#">Inicio</a></li>
-          <li class="nav__item"><a href="#">Juegos</a></li>
-          <li class="nav__item"><a href="#">Perfil</a></li>
-        </ul>
-      </nav>
+      <div class="header__content">
+        <div class="header__img">
+          <img src="/img/LoteriaLogo.jpeg" alt="logo">
+        </div>
+      </div>
     </header>
-    
-    <div class="content">
-      <div class="content__wrapper">
-          <div class="ticketsContainer">
-            <div @click="tomarValor(10, 50)" class="ticketsContainer__ticket">
-              <h2>10</h2>
-              <p>tickets</p>
-            </div>
-            <div @click="tomarValor(20, 100)" class="ticketsContainer__ticket">
-              <h2>20</h2>
-              <p>tickets</p>
-            </div>
-            <div @click="tomarValor(30, 150)" class="ticketsContainer__ticket">
-              <h2>30</h2>
-              <p>tickets</p>
-            </div>
-            <div @click="tomarValor(40, 200)" class="ticketsContainer__ticket">
-              <h2>40</h2>
-              <p>tickets</p>
+
+    <div class="content-page">
+      <div class="main-section">
+        <div class="tickets">
+          <p class="tickets__text">Seleccione un pack de tickets (con multiplicador)</p>
+          <div class="tickets__container">
+            <div 
+              class="container__item" 
+              v-for="pack in packs" 
+              :key="pack.idPack" 
+              @click="tomarValor(pack.monto, pack.multiplicador)"
+            >
+              <p class="item__number">{{ pack.monto }}</p>
+              <p class="item__text">SOLES</p>
+              <p class="item__text__monto">({{ pack.monto / 5 * pack.multiplicador }} tickets)</p>
             </div>
           </div>
 
-          <div class="secondRow">
-            <div class="customTickets">
-              <label for="customTickets" class="customTickets__label">o puedes ingresar aquí tu propio número de tickets</label>
-              <input v-model="ticketsManual" @change="cambiarManual()" type="number" name="customTickets" id="custom Tickets" class="customTickets__input" :disabled="disableManual">
-            </div>
+          <p class="tickets__text">O escribe tu propio número:  (S/ 5 por ticket)</p>
 
-            <div class="promoCode">
-              <input v-model="codigo" type="text" id="promoCode" placeholder="Código promocional" class="promoCode__input" :disabled="disableCode">
-              <button @click="validarCodigo()" class="promoCode__button" :disabled="disableCode">Validar código</button>
-              <button @click="limpiarCodigo()" class="promoCode__button" :disabled="disableClean">Limpiar</button>
+          <div class="tickets__custom">
+            <button @click="cambiarManual('minus')" class="custom__minus">-</button>
+            <input :min="0" type="number" name="inputTickets" id="inputTickets" class="custom__input" value="25" @change="cambiarManual('manual')" :disabled="disableManual" v-model="ticketsManual">
+            <button @click="cambiarManual('plus')" class="custom__plus">+</button>
+          </div>
+        </div> 
+
+        <div class="promo">
+          <p class="promo__text">Escribe aquí tu código promocional</p>
+          <input type="text" v-model="codigo" name="inputPromo" id="inputPromo" class="promo__input">
+
+          <template>
+            <div class="button-container">
+              <button class="promo__validar" @click="validarCodigo()" :disabled="disableCode">Validar</button>
+              <button class="promo__validar" @click="limpiarCodigo()">Limpiar</button>
             </div>
-          </div>
-          <div class="totalDiv">
-            <button class="totalDiv__button">Pagar: S/. {{ montoPago }}</button>
-            <p class="totalDiv__text">Tickets iniciales: {{ initialTickets }}</p>
-            <p class="totalDiv__text">Total de tickets: {{ totalTickets }} (Código: {{ codigo }})</p>
-          </div>
+          </template>
+
+          <p class="promo__text">Número de tickets(iniciales): {{ initialTickets }}</p>
+          <p class="promo__text">Número de tickets(finales): {{ totalTickets }}</p>
+          <p class="promo__text">Total: S/{{ montoPago }}</p>
+        </div>
+      </div>
+
+      <div class="comprar">
+        <button @click="sendData()" class="comprar__button" :disabled="totalTickets <= 0">Continuar compra</button>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
+import { juegosAxios } from '~/plugins/axios'
+import PackOrganizer from '@/utils/PackOrganizer'
+
 export default {
   name: 'index',
-  components: {
-    
-  },
-  props: {
-    
-  },
   data() {
     return {
-      codigoInfluencer: {isValid: true, ticketsRegalo: 20},
+      promoCodes: [],
+      codigoInfluencer: {},
+      selectedRaffle: {},
+      selectedGame: {},
       codigo: "",
+      packs: [],
+      games: [],
+      raffle: [],
       ticketsManual: 0,
       montoPago: 0,
       totalTickets: 0,
@@ -76,227 +81,357 @@ export default {
       disableManual: false,
       disableCode: true,
       disableClean: true,
-    };
+    }
   },
   computed: {
-    
+    organizedPacks() {
+      const organizer = new PackOrganizer(this.packs)
+      return organizer.organize()
+    }
+  },
+  mounted() {
+    this.getPromoCodes()
+    this.getJuego()
+    this.getSorteo() 
   },
   methods: {
-    tomarValor(tickets, value) {
+    getJuego() {
+      juegosAxios.get('/user/')
+      .then((response) => {
+        this.games = response.data
+        this.selectedGame = this.games.find((game) => game.activo === true)
+      })
+    },
+    getSorteo() {
+      juegosAxios.get('/user/sorteo/')
+      .then((response) => {
+        this.raffle = response.data
+        this.selectedRaffle = this.raffle.find((pack) => pack.activo === true)
+        console.log(this.selectedRaffle)
+      })
+      .finally(() => {
+        this.getTickets()
+      })
+    }, 
+    getTickets() {
+      juegosAxios.get(`/user/pack/packSorteo/${this.selectedRaffle.idSorteo}`)
+        .then((response) => {
+          this.packs = response.data
+        })
+        .catch(() => {
+          this.$makeToast('error', 'error')
+        })
+    },
+    getPromoCodes() {
+      juegosAxios.get('/user/influencers/codigoPromocional/')
+        .then((response) => {
+          this.promoCodes = response.data
+        })
+        .catch(() => {
+          this.$makeToast('error', 'error')
+        })
+    },
+    tomarValor(tickets, multiplicador) {
       this.ticketsManual = 0
-      this.totalTickets = tickets
-      this.initialTickets = tickets
-      this.montoPago = value
-      this.disableManual = true
+      this.totalTickets = tickets / 5 * multiplicador
+      this.initialTickets = tickets / 5
+      this.montoPago = tickets
       this.disableCode = false
     },
     validarCodigo() {
-
-      if (this.codigoInfluencer.isValid) {
-        this.totalTickets += this.codigoInfluencer.ticketsRegalo
-        this.disableCode = true
-        this.disableClean = false
-      }
+      this.codigoInfluencer = this.promoCodes.find((code) => code.codigo === this.codigo)
+      
+      if (this.codigoInfluencer) {
+        this.$makeToast("success", "Código válido")
+        if (this.codigoInfluencer.activo) {
+            this.totalTickets *= this.codigoInfluencer.multiplicador
+            this.disableCode = true
+            this.disableClean = false
+        }
+      } else this.$makeToast("error", "Código inválido")
     },
     limpiarCodigo() {
       this.totalTickets = this.initialTickets
       this.disableCode = false
       this.codigo = ""
     },
-    cambiarManual() {
+    cambiarManual(option) {
+      if (option === 'minus') {
+        if (this.ticketsManual > 0) {
+          this.ticketsManual--
+        }
+      } else if (option === 'plus') {
+        this.ticketsManual++
+      } else {
+        this.ticketsManual = parseInt(this.ticketsManual)
+      }
       this.totalTickets = this.ticketsManual
       this.initialTickets = this.ticketsManual
       this.montoPago = this.ticketsManual * 5
       this.disableCode = false
+    },
+    sendData() {
+      if (this.codigoInfluencer.codigo === undefined) {
+        this.codigoInfluencer.codigo = ''
+      }
+      const data = {
+        tickets: this.totalTickets,
+        monto: this.montoPago,
+        ticketsInicial: this.initialTickets,
+        codigoInfluencer: this.codigoInfluencer.codigo,
+        nombreSorteo: this.selectedGame.nombre,
+        fechaSorteo: this.selectedRaffle.fechaSorteo
+      }
+      this.$router.push({ 
+        name: 'usuarioCompra', 
+        query: data 
+      })
     }
-  },
-  mounted() {
-    
-  },
-  created() {
-    
-  },
-  watch: {
-    
   }
-};
+}
 </script>
 
 <style scoped lang='scss'>
-body {
+* {
   padding: 0;
   margin: 0;
-  // box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
 }
 
-.content-page {
-  font-family: Arial, Helvetica, sans-serif;
+header {
+  width: 100%;
+  height: 100px;
+  background-color: #FB292A;
+}
+
+.header__content {
+  width: 60%;
+  height: 100%;
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-color: #f4f4f4;
+  justify-content: space-between;
+  align-items: center;
 
-  .header {
-    background-color: #050e1f;
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-
-    &__nav {
-      margin-top: 10px;
-
-      ul {
-        list-style-type: none;
-        display: flex;
-        justify-content: center;
-      }
-
-      .nav__item {
-        margin: 0 15px;
-
-        a {
-          text-decoration: none;
-          color: #fff;
-          font-weight: bold;
-        }
-      }
-    }
+  @media (max-width: 768px) {
+    width: 80%;
   }
 
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 }
 
-.content {
-  flex: 1;
+.header__img {
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  &__wrapper {
+.header__img img {
+  width: 90%;
+  border-radius: 100%;
+}
+
+.content-page {
+  width: 60%;
+  margin: auto;
+
+  @media (max-width: 768px) {
     width: 80%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  }
 
-    div {
-      // background-color: #fb292a;
-      padding: 15px;
-      text-align: center;
-      color: #fff;
-      height: 100px; /* Ajusta la altura según tus necesidades */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .ticketsContainer {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      padding: 0;
-      background-color: transparent;
-
-      &__ticket{
-        background-color: rgba(0,0,0,0.1);
-        color: #050e1f;
-        padding: 10px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 2px 1px 4px 0px red;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        // gap: 5px;
-        font-family: Arial, Helvetica, sans-serif;
-
-        h2 {
-          font-size: 40px;
-          font-weight: bold;
-          // margin-bottom: 5px;
-        }
-
-        p {
-          font-size: 30px;
-        }
-      }
-    }
+  @media (max-width: 480px) {
+    width: 90%;
   }
 }
 
-.secondRow {
-  display: flex;
-
-  .customTickets {
-    width: 50%;
-    display:flex;
-    justify-content: space-between;
-
-    &__label {
-      font-size: 16px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #000;
-      font-weight: 700;
-      margin-right: 10px
-    }
-
-    &__input {
-      height: 35px;
-      text-align: center;
-    }
-  }
-
-  .promoCode {
-    width: 50%;
-    display:flex;
-    justify-content:center;
-
-    &__input{
-      height: 35px;
-      width: 45%;
-      // border-radius: 0px 10px 10px 0px;
-      border: 1px solid #ccc;
-      color: #000;
-      text-align: center;
-    }
-
-    &__button {
-      height: 35px;
-      width: 55%;
-      border-radius: 0px 10px 10px 0px;
-      color:#fff;
-      background-color: red;
-      border: none;
-      font-weight: 600;
-    }
-  }
-}
-
-.totalDiv {
-  height: 40px;
-  width: 100%;
+.main-section {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
 
-  &__button {
-    width: 70%;
-    height: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.8);
-    color: #fff;
-    font-size: 20px;
-  }
+.tickets {
+  height: 100%;
+  width: 58.33%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 30px;
+  margin-bottom: 20px;
 
-  &__text { 
-    width: 30%;
-    font-size: 16px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000;
-    font-weight: 700;
-    margin-right: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
 
+.tickets__text {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
 
+.tickets__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.container__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.container__item:hover {
+  background-color: #ffffff;
+}
+
+.container__item p {
+  color: #000000;
+  text-align: center;
+}
+
+.item__number {
+  font-size: 20px; /* Ajusta el tamaño de la fuente según sea necesario */
+  line-height: 1.2;
+  margin: 0;
+}
+
+.item__text {
+  font-size: 12px; /* Ajusta el tamaño de la fuente según sea necesario */
+  line-height: 1.2;
+  margin: 0;
+}
+
+.item__text__monto {
+  font-size: 15px; /* Ajusta el tamaño de la fuente según sea necesario */
+  line-height: 1.2;
+  margin: 0;
+}
+
+.tickets__custom {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.tickets__custom button {
+  padding: 5px;
+  height: 30px;
+  background-color: #070D1C;
+  color: #fff;
+  font-size: 14px;
+}
+
+.custom__input {
+  border: 1px solid #000;
+  text-align: center;
+  background-color: transparent;
+  margin: 0 10px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+.promo {
+  width: 33.33%;
+  padding: 30px;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.promo__text {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.promo__input {
+  border: 1px solid #000;
+  text-align: center;
+  background-color: transparent;
+  height: 30px;
+  width: 80%;
+  margin: 10px auto 30px auto;
+  border-radius: 8px;
+}
+
+.promo__validar {
+  background: #FB292A;
+  color: #fff;
+  height: 30px;
+  width: 60%;
+  border: none;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.promo__validar {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #FB292A;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comprar {
+  width: 100%;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.comprar__button {
+  background-color: transparent;
+  border: 2px solid #070D1C;
+  color: #070D1C;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+  height: 50px;
+  width: 345px;
+  border-radius: 5px;
+}
 </style>

@@ -1,7 +1,0 @@
-{
-  "login": "Log in",
-  "logout": "Log out",
-  "invalidCredentials":"Incorrect username or password",
-  "error":"An unexpected error occurred. Try again.",
-  "noCredentials": "Credentials not provided"
-}

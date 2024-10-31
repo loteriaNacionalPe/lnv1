@@ -1,12 +1,12 @@
 <template>
   <div class="table-responsive mx-auto mb-2" :style="'width:' + tableWidth + '%'">
-    <h4 v-if="registers.length==0" class="text-center">{{ $t('app').noRecords }}</h4>
+    <h4 v-if="registers.length==0" class="text-center"> Sin registros</h4>
     <table v-if="registers.length>0" class="table table-sm table-hover table-bordered">
       <thead class="table-light">
         <tr class="table-bordered">
           <th class="text-center align-middle border" :style="'width:10%'" scope="col">#</th>
           <th class="text-center align-middle border" v-for="col in cols" scope="col" :key="$generateKey(5) + col.title">{{ col.title }}</th>
-          <th class="text-center align-middle border" :style="'width:15%'" v-if="hasOptions" scope="col">{{ $t('app').options }}</th>
+          <th class="text-center align-middle border" :style="'width:15%'" v-if="hasOptions" scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -39,11 +39,11 @@
       <nav class="d-sm-flex align-items-center justify-content-between">
         <div class="row justify-content-between  ml-0">
           <select class="custom-select custom-select-sm" v-model="perPage" @change="changePage(1)">
-            <option disabled value="">N° {{ $t("app").rows }}</option>
-            <option value="15">15 {{ $t("app").rows }}</option>
-            <option value="20">20 {{ $t("app").rows }}</option>
-            <option value="50">50 {{ $t("app").rows }}</option>
-            <option value="100">100 {{ $t("app").rows }}</option>
+            <option disabled value="">N° Filas</option>
+            <option value="15">15 Filas</option>
+            <option value="20">20 Filas</option>
+            <option value="50">50 Filas</option>
+            <option value="100">100 Filas</option>
           </select>
         </div>
         <div class="row justify-content-between  mr-0">
@@ -117,10 +117,10 @@ export default {
   },
   methods:{
     deleteObject(register) {
-      this.$confirmDialog(this.$t("app").confirmMessage, this.$t("app").confirmation, "delete", register, this.level)
+      this.$confirmDialog("", "", "delete", register, this.level)
     },
     disabledEnabledObject(register) {
-      this.$confirmDialog(this.$t("app").confirmMessage, this.$t("app").confirmation, "disable", register, this.level)
+      this.$confirmDialog("Confirmar", "", "disable", register, this.level)
     },
     changePage(page){
       this.currentPage = page == null ? this.currentPage : page

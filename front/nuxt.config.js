@@ -26,10 +26,10 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: "~/plugins/app.js", mode: "client" },
-    { src: "~/plugins/i18n.js", mode: "client" },
     { src: "~/plugins/common.js", mode: "client" },
     { src: "~/plugins/date.js", mode: "client" },
     { src: "~/plugins/table.js", mode: "client" },
+    { src: '~/plugins/axios.js', mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -46,38 +46,35 @@ export default {
     // Doc: https://www.primefaces.org/primevue/showcase-v2/#/setup
     '@nuxtjs/axios',// library to make petitions
     '@nuxtjs/auth-next', // library to authentication
-    '@nuxtjs/i18n', // library to translate
     'primevue/nuxt',// library of components
     "bootstrap-vue/nuxt",// library of components
   ],
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    baseURL: "http://localhost:8001", // api url for local,
-    withCredentials: false,
-    // https: false
-  },
+
+  baseURL: "http://localhost:9000", // api url for local,
+  withCredentials: false,
+  // https: false
   //to authentication
   auth: {
     redirect: {
       home: "/",
     },
-    strategies: {
-      local: {
-        token: {
-          property: "data.access_token",
-          type: "Token",
-          maxAge: 60 * 60 * 10,
-          global: true,
-          required: true,
-        },
-        user: {
-          property: "data",
-          autoFetch: false,
-        },
+      strategies: {
+        local: {
+          token: {
+            property: "access_token",
+            type: "",
+            maxAge: 60 * 60 * 10,
+            global: true,
+            required: true,
+          },
+          user: {
+            property: "0",
+            autoFetch: false,
+          },
         endpoints: {
           //login: { url: "/usuarios/", method: "get" },
-          login: { url: "/api/usuarios/loggeo", method: "post" },
-          user: { url: "/api/usuarios/detalles", method: "get" },
+          login: { url: "http://localhost:9000/api/auth/login", method: "post" },
+          user: { url: "http://localhost:9000/api/user/detalles", method: "get" },
           logout: false,
         },
       },
@@ -86,6 +83,13 @@ export default {
   //to redited to login if no exist credentials
   router: {
     middleware: ['auth'],
+  },
+  serverMiddleware: [
+    '~/serverMiddleware/cors'
+  ],
+  axios: {
+    proxyHeaders: false,
+    credentials: false
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -97,12 +101,6 @@ export default {
         include: /node_modules/,
         type: 'javascript/auto',
       })
-    },
-  },
-  //to tranlate pages
-  i18n: {
-    detectBrowserLanguage: {
-      onlyOnRoot: true,
     },
   },
   //custom loader to review

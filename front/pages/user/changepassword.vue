@@ -14,13 +14,10 @@
   </div>
 </template>
 <script>
-import ChangePassword from '~/components/pages/security/users/ChangePassword.vue'
+// import ChangePassword from '~/components/pages/security/users/ChangePassword.vue'
 
 export default{
   layout: 'auth',
-  components:{
-    ChangePassword
-  },
   mounted(){
     if(!this.$auth.user.is_first_login) window.location.href = '/'
     else this.$showLoader(false)

@@ -7,7 +7,7 @@
         </div>
 
         <div class="main__group">
-          <InputText placeholder="Usuario" id="usernameId" class="p-inputtext-sm group__input" v-model="loginData.dni" />
+          <InputText placeholder="Usuario" id="usernameId" class="p-inputtext-sm group__input" v-model="loginData.email" />
         </div>
 
         <div class="main__group">
@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       loginData: {
-        dni: "",
+        email: "",
         contrasena: "",
       },
       users: [],
@@ -68,14 +68,14 @@ export default {
   mounted() {
     // this finish the loadder
     this.$showLoader(false)
-    this.$axios.setHeader("Accept-Language", this.$i18n.locale)
   },
   methods: {
     async login() {
       this.noCredentials = false
       this.error = false
       this.invalidCredentials = false
-      if (this.loginData.dni === "" || this.loginData.contrasena === "") {
+
+      if (this.loginData.email === "" || this.loginData.contrasena === "") {
         this.noCredentials = true
       } else {
         try {
@@ -91,26 +91,18 @@ export default {
             })
             .then((response) => {
               if (response.status === 200) {
-                location.reload()
-                this.$router.push('/') 
+                document.location.href = "/vista" 
               }
             })
-
-            // const response = await this.$axios.post('/api/usuarios/loggeo', this.loginData)
-      
-            // if (response.status === 200) {
-            //   Redirigir a la página deseada después del login
-            //   this.$router.push('/') 
-            // }
-        } catch (e) {
-          console.log(e)
-          if (e.response.data.data.errors.non_field_errors[0] === "Invalid credentials") {
-            this.invalidCredentials = true
-            // this finish the loadder
-            this.$nextTick(() => {
-              this.$nuxt.$loading.finish()
-            })
-          } else this.error = true
+        } catch (error) {
+           if (error.response && error.response.data && error.response.data.errors) {
+              // Ajusta según la estructura de error que retorna tu backend
+              if (error.response.data.errors.non_field_errors && error.response.data.errors.non_field_errors[0] === "Invalid credentials") {
+                this.invalidCredentials = true
+              } else {
+                this.error = true
+              }
+            }
           } finally {
             this.$nextTick(() => {
               this.$nuxt.$loading.finish()
